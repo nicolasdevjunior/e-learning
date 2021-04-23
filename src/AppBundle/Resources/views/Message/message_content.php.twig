@@ -1,0 +1,163 @@
+<div class="container">
+	<div class="card">
+	    <div class="card-body">
+	       <div class="row">
+	           <div class="col-sm-8">
+	               <h3 class="text-info">{{"Boite de reception"}}</h3>
+	           </div>
+		   </div>
+		   <div class="row">
+	           <div class="col-sm-8 mess">
+	     {% for allmp in mp %}
+	     {% if allmp.idRecever == app.user.id %}   
+	        {% if allmp.stateMessage == 0 %}
+			    <div class="state">
+			       <div class="row">
+	                 <div class="col-sm-8 col-sm-offset-1">
+			 	{% if allmp.nom is empty %}
+			 		<strong><a href="{{path('one_message',{'id':allmp.id,'offset':0,'max':5,'state':1})}}" class="text-info" >{{allmp.username|capitalize}}</a>
+			 		{{ render(controller("AppBundle:Message:nonlu",{'id' :allmp.id}))}} 
+			 		</strong>
+			 	{% else %}
+			 		 <strong><a href="{{path('one_message',{'id':allmp.id,'offset':0,'max':5,'state':1})}}" class="text-info">{{allmp.nom|capitalize}}  {{allmp.prenom|capitalize}}</a>
+			 		 {{ render(controller("AppBundle:Message:nonlu",{'id' :allmp.id}))}} 
+			 		 </strong>
+             	{% endif %}
+					 </div>
+					 <div class="col-sm-2">
+					 	<p class="text-info">Non lu</p>
+					 </div>
+	               </div>
+	               <div class="row">
+	                    <div class="col-sm-8 col-sm-offset-1">
+	                    {% if app.user.id == allmp.idSender %}
+	                       <strong><p class="mpuser">
+	                       <span class="step size-16">
+		                    <i class="icon ion-android-chat blue"></i>
+		                    </span>
+	                       {{ allmp.contentMessage|nl2br }}
+	                       </p></strong>
+	                    {% else %}
+	                       <strong><p class="mpuser">
+		                       <span class="step size-16">
+			                    <i class="icon ion-android-chat green"></i>
+			                    </span>
+	                       {{ allmp.contentMessage|nl2br }}
+	                       </p></strong>
+	                    {% endif %}
+	                    </div>
+	                </div>
+	                <div class="row">
+	                    <div class="col-sm-8 col-sm-offset-1">
+	                        <p>
+	                           <span class="step size-16">
+			                    <i class="ion-android-alarm-clock"></i>
+			                    </span>
+		                    <strong>
+	                        	<time class="timeago" datetime="{{ allmp.createdAt|date }}">{{ allmp.createdAt|date }}</time>
+	                        </strong>
+	                        </p>
+	                    </div>
+	                </div>
+	            </div>
+	             <hr>
+	        {% else %}
+	        		<div class="row">
+	                 <div class="col-sm-8 col-sm-offset-1">
+			    {% if allmp.nom is empty %}
+			 		<a href="{{path('one_message',{'id':allmp.id,'offset':0,'max':5,'state':0})}}" class="text-info">{{allmp.username|capitalize}}</a><br/>
+			    {% else %}
+			 		 <a href="{{path('one_message',{'id':allmp.id,'offset':0,'max':5,'state':0})}}" class="text-info">{{allmp.nom|capitalize}}  {{allmp.prenom|capitalize}}</a><br/>
+                {% endif %}
+					 </div>
+	               </div>
+	               <div class="row">
+	                    <div class="col-sm-8 col-sm-offset-1">
+	                    {% if app.user.id == allmp.idSender %}
+	                       <p class="mpuser">
+	                       <span class="step size-16">
+		                    <i class="icon ion-android-chat blue"></i>
+		                    </span>
+	                       {{ allmp.contentMessage|nl2br }}
+	                       </p>
+	                    {% else %}
+	                       <p class="mpuser">
+		                       <span class="step size-16">
+			                    <i class="icon ion-android-chat green"></i>
+			                    </span>
+	                       {{ allmp.contentMessage|nl2br }}
+	                       </p>
+	                    {% endif %}
+	                    </div>
+	                </div>
+	                <div class="row">
+	                    <div class="col-sm-8 col-sm-offset-1">
+	                        <p>
+	                           <span class="step size-16">
+			                    <i class="ion-android-alarm-clock"></i>
+			                    </span>
+		                    <strong>
+	                        	<time class="timeago" datetime="{{ allmp.createdAt|date }}">{{ allmp.createdAt|date }}</time>
+	                        </strong>
+	                        </p>
+	                    </div>
+	                </div>
+	                <hr>
+	        {% endif %}
+	    {% else %}
+	    		<div class="row">
+	                 <div class="col-sm-8 col-sm-offset-1">
+			 {% if allmp.nom is empty %}
+			 		<a href="{{path('one_message',{'id':allmp.id,'offset':0,'max':5,'state':0})}}" class="text-info">{{allmp.username|capitalize}}</a><br/>
+			 {% else %}
+			 		 <a href="{{path('one_message',{'id':allmp.id,'offset':0,'max':5,'state':0})}}" class="text-info">{{allmp.nom|capitalize}}  {{allmp.prenom|capitalize}}</a><br/>
+             {% endif %}
+					 </div>
+					 <div class="col-sm-2">
+					 {% if allmp.stateMessage == 1 %}
+					 	<p class="text-success">Vu</p>
+					 {% else %}
+					    <p class="text-info">Non lu</p>
+					 {% endif %}
+					 </div>
+	            </div>
+	            <div class="row">
+	                    <div class="col-sm-8 col-sm-offset-1">
+	                    {% if app.user.id == allmp.idSender %}
+	                       <p class="mpuser">
+	                       <span class="step size-16">
+		                    <i class="icon ion-android-chat blue"></i>
+		                    </span>
+	                       {{ allmp.contentMessage|nl2br }}
+	                       </p>
+	                    {% else %}
+	                       <p class="mpuser">
+		                       <span class="step size-16">
+			                    <i class="icon ion-android-chat green"></i>
+			                    </span>
+	                       {{ allmp.contentMessage|nl2br }}
+	                       </p>
+	                    {% endif %}
+	                    </div>
+	            </div>
+	            <div class="row">
+	                    <div class="col-sm-8 col-sm-offset-1">
+	                        <p>
+	                           <span class="step size-16">
+			                    <i class="ion-android-alarm-clock"></i>
+			                    </span>
+		                    <strong>
+	                        	<time class="timeago" datetime="{{ allmp.createdAt|date }}">{{ allmp.createdAt|date }}</time>
+	                        </strong>
+	                        </p>
+	                    </div>
+	            </div>
+	                <hr>
+	    {% endif %}
+	     {% endfor %} 
+	            </div>
+	        </div>
+	      </div>
+    </div>
+</div>
+	

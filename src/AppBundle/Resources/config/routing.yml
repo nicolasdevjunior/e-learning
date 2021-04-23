@@ -1,0 +1,190 @@
+app_homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+
+menu_view:
+    path:     /user/menu
+    defaults: { _controller: AppBundle:Menu:index }
+
+parametre:
+    path:     /user/parametre
+    defaults: { _controller: AppBundle:Parametre:index }
+
+notifications:
+    path:     /user/notifications
+    defaults: { _controller: AppBundle:Notifications:index }
+
+maintenance:
+    path:     /user/maintenance
+    defaults: { _controller: AppBundle:Maintenance:index }
+
+message:
+    path:     /user/message
+    defaults: { _controller: AppBundle:Message:index }
+
+one_message:
+    path:     /user/message/{id}/{offset}/{max}/{state}
+    defaults: { _controller: AppBundle:Message:one_message }
+        
+plusdemenu:
+    path:     /user/plus
+    defaults: { _controller: AppBundle:Plus:index }
+
+test:
+    path:     /user/test
+    defaults: { _controller: AppBundle:Test:index }
+
+amis:
+    path:     /user/amis
+    defaults: { _controller: AppBundle:Amis:index }
+
+demande:
+    path:     /user/demande
+    defaults: { _controller: AppBundle:Demande:index }
+
+ajouter_amis:
+    path:     /user/ajouter_amis/{id}
+    defaults: { _controller: AppBundle:Demande:ajouterAmis }
+
+bloque_user:
+    path:     /user/bloque_user/{id}
+    defaults: { _controller: AppBundle:Demande:bloquer }
+
+retirerAmis:
+    path:     /user/retirerAmis/{id}/{url}
+    defaults: { _controller: AppBundle:Demande:retirerAmis }
+
+annuler_demande:
+    path:     /user/annuler_demande/{id}
+    defaults: { _controller: AppBundle:Demande:annulerDemande }
+
+confirmerDemande:
+    path:     /user/confirmerDemande/{id}
+    defaults: { _controller: AppBundle:Demande:confirmerDemande }
+
+annuler_demande_user:
+    path:     /user/annuler_demande_user/{id}
+    defaults: { _controller: AppBundle:Demande:annulerDemandeUser }
+
+confirmerDemandeUser:
+    path:     /user/confirmerDemandeUser/{id}
+    defaults: { _controller: AppBundle:Demande:confirmerDemandeUser }
+
+commentairePub:
+    path:     /user/commentaire/{idcoms}
+    defaults: { _controller: AppBundle:Commentaire:index }
+
+jaime:
+    path:     /user/jaime/{id}
+    defaults: { _controller: AppBundle:Operation:jaime }
+
+jaimeAmis:
+    path:     /user/jaimeAmis/{id}/{idP}/{page}
+    defaults: { _controller: AppBundle:Operation:jaimeAmis }
+
+affichePub:
+    path:     /user/publicationAffiche/{idPub}
+    defaults: { _controller: AppBundle:Publication:affichePub }
+
+publication:
+    path:     /user/publication
+    defaults: { _controller: AppBundle:Publication:index }
+    methods: [post]
+
+publication_amis:
+    path:     /user/publication_amis
+    defaults: { _controller: AppBundle:Publication:publierSurMurAmis }
+    methods: [post]
+
+jenaimeplus:
+    path:     /user/jenaimeplus/{id}
+    defaults: { _controller: AppBundle:Operation:jenaimeplus }
+
+jenaimeplusAmis:
+    path:     /user/jenaimeplusAmis/{id}/{idP}/{page}
+    defaults: { _controller: AppBundle:Operation:jenaimeplusAmis }
+
+supprimer:
+    path:     /user/supprimer/{id}
+    defaults: { _controller: AppBundle:Operation:supprimer }
+
+login_page:
+    path:     /login_page
+    defaults: { _controller: AppBundle:Login:index }
+
+connexion_page:
+    path:     /connexion_page
+    defaults: { _controller: AppBundle:Login:login }
+
+logout_page:
+    path:     /logout_page
+    defaults: { _controller: AppBundle:Logout:index }
+
+verification_user:
+    path:     /verification_user
+    defaults: { _controller: AppBundle:Login:verification_user }
+
+cours:
+    path:   /user/cours
+    defaults: {_controller: AppBundle:Cours:index} 
+
+sendcours:
+    path:   /user/send
+    defaults: {_controller: AppBundle:Cours:send} 
+
+all_user:
+    path:     /admin/all_user
+    defaults: { _controller: AppBundle:Admin:getuser }
+one_user:
+    path:     /admin/one_user/{id}
+    defaults: { _controller: AppBundle:Admin:getoneuser }
+
+profile_homepage:
+    path:     /user/profileuser
+    defaults: { _controller: AppBundle:Profile:index }
+
+profile_amis:
+    path:     /user/profile_amis/{id}
+    defaults: { _controller: AppBundle:ProfileAmis:index}
+
+delete_account:
+    path:     /user/delete_account/{id}
+    defaults: { _controller: AppBundle:Delete:index }
+
+suggestion:
+    path:     /user/suggestion
+    defaults: { _controller: AppBundle:Suggestion:index }    
+
+projet:
+    path:     /user/projet
+    defaults: { _controller: AppBundle:Projet:index }    
+
+info_projet:
+    path:     /user/infoproject/{id}
+    defaults: { _controller: AppBundle:Projet:project }  
+
+create_projet:
+    path:     /user/create
+    defaults: { _controller: AppBundle:Projet:create }     
+
+avis_projet:
+    path:     /user/avis
+    defaults: { _controller: AppBundle:Projet:avis }     
+
+plus_avis:
+    path:     /user/plusavis/{id}/{lim}/{offset}
+    defaults: { _controller: AppBundle:Projet:plusAvis } 
+
+moins_avis:
+    path:     /user/moinsavis/{id}/{lim}/{offset}
+    defaults: { _controller: AppBundle:Projet:moinsAvis } 
+
+user :
+    path:     /user/test
+    defaults: { _controller: AppBundle:Default:testUser }
+admin :
+    path:     /admin/test
+    defaults: { _controller: AppBundle:Default:testAdmin }
+test_log:
+    path:     /log
+    defaults: { _controller: AppBundle:Test:log } 

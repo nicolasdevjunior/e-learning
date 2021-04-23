@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="card-body">            
+            
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-1">
+                        <strong>{{ app.user.nom|e|capitalize }} {{ app.user.prenom|e|capitalize }}</strong>
+                    </div>
+                </div>
+                <div class="row">
+                   <div class="mpuser col-sm-12 col-sm-offset-2">
+                        {{ pub.content|e|nl2br }}
+                    </div>   
+                </div>
+                <div class="row">
+                    <div class="col-sm-7 col-sm-offset-1">
+                      {% if pub.jaime > 0 %}
+                          {{ pub.jaime }}
+                      {% endif %}
+                      {{ render(controller("AppBundle:Profile:ifSomeoneWasLikedSomePub",{'idpub' :pub.id})) }}
+                        <a href="{{path('supprimer',{'id':pub.id})}}" class="text-danger">Supprimer
+                        </a>
+                    </div> 
+                    <div class="col-sm-4">
+                        <strong>{{ pub.created_at|date }}</strong>
+                    </div>   
+                </div>
+
+                <hr>
+    {{form_start(formCommentaire) }}
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-1">
+                        {{form_widget(formCommentaire.content,{attr :{ class :'form-control',placeholder :'Votre commentaire ici..'}}) }} 
+                    </div>   
+                    <div class="col-sm-3">
+                        {{form_widget(formCommentaire.commenter,{attr :{ class :"btn btn-info btnwhite btn-sm"}}) }}
+                    </div> 
+                </div>
+     {{form_rest(formCommentaire) }} 
+
+                <hr>
+          
+    </div>
+</div>

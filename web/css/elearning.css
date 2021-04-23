@@ -1,0 +1,300 @@
+body,p
+{
+	font-family: Times New Roman;
+}
+.bgproject
+{
+   background-color: purple !important;
+   color: white !important;
+   padding: 20px;
+}
+.iconsvideo
+{
+	padding: 20%;
+    background-color: purple;
+    margin:0;
+    border-radius: 50%;
+}
+.iconstext
+{
+	padding: 20%;
+    background-color: yellow;
+    margin:0;
+    border-radius: 50%;
+}
+.iconspdf
+{
+	padding: 20%;
+    background-color: #5bc0de;
+    margin:0;
+    border-radius: 50%;
+}
+.iconspowerpoint
+{
+	padding: 20%;
+    background-color: orange;
+    margin:0;
+    border-radius: 50%;
+}
+
+.projeticons
+{
+	color: #fff !important;
+	padding: 20%;
+    margin:0;
+    border-radius: 50%;
+}
+.yellow
+{
+    background-color: yellow;
+}
+.purple
+{
+   background-color: purple;	
+}
+.bl
+{
+	background-color: #5bc0de;
+}
+.glyphicon-cloud-upload
+{
+	font-size: 40px !important;
+}
+.orange
+{
+	padding: 20%;
+    margin:0;
+    border-radius: 50%;
+	background-color: orange;
+}
+
+.projet a:hover
+{
+	text-decoration: none !important;
+}
+
+.fa-file-pdf-o,.fa-file-text,.fa-file-powerpoint-o,.fa-file-video-o
+{
+	color: white;
+}
+.calligraphy
+{
+	font-family: Lucida Calligraphy;
+}
+.align
+{
+	 display: block;
+	 margin: 0 auto;
+}
+.pubIc
+{
+	cursor: pointer;
+}
+.contenu
+{
+	padding: 20px 0 20px;
+}
+.thirdTitle
+{
+	position: relative;
+	margin-bottom: 20px;
+}
+@media(min-width: 768px)
+{
+	.cours .fa{
+	   font-size: 50px !important;
+	}
+	.projet .fa{
+	   font-size: 20px !important;
+	}
+}
+@media (min-width: 768px) and (max-width: 991px) {
+   .logo
+   {
+   	 margin-left: 40px;
+   }
+}
+@media (min-width: 997px) {
+  
+.contenu .thirdTitle::before
+{
+    content: '';
+    background: gray;
+    height: 2px;
+    width: 70px;
+    position: absolute;
+    top: 45%;
+    left:17%;
+}
+.contenu .thirdTitle::after
+{
+    content: '';
+    background: gray;
+    height: 2px;
+    width: 70px;
+    position: absolute;
+    top: 45%;
+    right:17%;
+}
+}
+.elearningText
+{
+	font-size: 50px;
+	color: #47b5ad;
+}
+.navbar-default .navbar-collapse{
+    margin-top: 50px;
+}
+/*Lucida Calligraphy*/
+.search .form-control, .search .btn
+{
+	 border-radius: 0px !important;
+}
+.search
+{
+	padding-right: 0px;
+    padding-left: 0;
+}
+.navbar
+{
+	min-height: 100px !important;
+}
+.navbar-color
+{
+	background-color: white;
+}
+.navbar-nav > li > a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.navbar-btn {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.contenuinscription
+{
+	padding: 20px 0 20px;
+}
+
+.navbar-right
+{
+   margin: 10px;
+}
+
+#register-navbar a
+{
+	color: grey !important;
+}
+
+#register .lien a 
+{
+	 color: #fff !important;
+}
+
+.navbar
+{
+	margin-bottom: 0 !important;
+}
+.header{
+	margin-top: 0;
+	background-image: url("../img/header.jpg");
+	background-size: cover;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.allcontent
+{
+	padding-top: 10%;
+	padding-bottom: 10%;
+	padding-left: 20px;
+	padding-right:  20px;
+	min-height: 200px;
+}
+.titre_header
+{
+	color: white;
+	text-shadow: 2px 2px 4px #000; 
+}
+.search_content
+{
+	display: block;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.imgcentre
+{
+	display: block;
+	margin: 0 auto;
+}
+.text-white
+{
+	color: white;
+}
+.atous
+{
+	margin-bottom: 0;
+	border-radius: 0;
+}
+.rejoindre
+{
+	margin-bottom: 20px;
+	background-color: #47b5ad;
+	font-family: Lucida Calligraphy;
+	color: #fff;
+}
+.colorVerte
+{
+   color: #47b5ad;	
+}
+.rejoindre:hover
+{
+	background-color: #5bc0de;
+	color: #fff;
+}
+.search_btn
+{
+   opacity: 0.7;
+}
+
+.search_input
+{
+   opacity: 0.7;
+   border: none;
+}
+.format
+{
+	padding: 20px 0 20px;	
+	background: #47b5ad;
+}
+.footer
+{
+	background-color: #000; 
+	padding: 20px 0 20px;
+	color: #fff;
+}
+section:last-of-type{
+    margin-bottom: 70px;
+}
+
+#fos_user_registration_form ul li
+{
+	color: red;
+	list-style: none;
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+.modal-body {
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+.padd
+{
+	padding: 50px 0 50px;
+}

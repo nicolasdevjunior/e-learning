@@ -1,0 +1,84 @@
+{% extends "::ancien.html.twig" %}
+{% block title %}
+     Profile
+{% endblock %}
+
+{% block body %}
+
+{{ render(controller("AppBundle:Menu:index"))}}  
+{% include "AppBundle:Profile:profile_content.php.twig" %} 
+{% include "AppBundle:Default:footer.php.twig" %}
+
+{% endblock %}
+{% block javascript %}
+    <script>
+$(document).ready(function()
+{
+    $("time.timeago").timeago();
+        $(".publier").click(function(e){
+            e.preventDefault();
+            var now = moment().format("YYYY-MM-DD HH:mm:ss");
+            var content = $('.contentPublier').val();
+        if(content !="")
+        {
+            $.ajax({
+                url: "{{path('publication')}}",
+                type: 'POST',
+                data:
+                {
+                    id : content,
+                    created_at : now
+                },
+                beforeSend: function()
+                {
+                    console.log('chargement...');
+                    $('#chargement').removeClass("hidden");
+                    $('#chargement').html('chargement de votre publication...');
+                },
+                success:function(data)
+                {
+                  console.log(data.nom);
+                  $('.contentPublier').val("");
+                  $('#chargement').addClass("hidden");
+                  $('#success').removeClass("hidden"); 
+                  $('#success').html('Actualité publié avec succès...');
+                  $("#success").delay(4000).fadeOut(1000);
+                  var ajoutPublication = $(".justclick").clone();
+                  ajoutPublication.find(".contentPub").html(content);
+                  //jaime
+                  var hrefContentJaime = ajoutPublication.find(".jaime").attr("href");
+                  var newIdPub = hrefContentJaime.replace("un",data.idPubNew);
+                  ajoutPublication.find(".jaime").attr("href",newIdPub);
+                  //Coms
+                  var hrefContentComs = ajoutPublication.find(".commentaire").attr("href");
+                  var newIdPubComs = hrefContentComs.replace("un",data.idPubNew);
+                  ajoutPublication.find(".commentaire").attr("href",newIdPubComs);
+                  //Sup
+                  var hrefContentSup = ajoutPublication.find(".supprimer").attr("href");
+                  var newIdPubSup = hrefContentSup.replace("un",data.idPubNew);
+                  ajoutPublication.find(".supprimer").attr("href",newIdPubSup);
+                  ajoutPublication.find(".created_at").html(now);
+
+                  ajoutPublication.removeClass("hidden");
+                  ajoutPublication.show();
+                  $(".justclick").after(ajoutPublication);
+                 },
+                 error:function()
+                 {
+                    $('#chargement').addClass("hidden");
+                    $('#success').addClass("hidden"); 
+                    $('#erreurPub').removeClass("hidden");
+                    $('#erreurPub').html('Nous ne pouvons pas publier votre publication pour l\'instant...');
+                 }  
+            }); 
+        }else{
+            $('#erreurPub').removeClass("hidden");
+            $('#erreurPub').html('Inserer au moins une caractères...');
+            $('#erreurPub').delay(4000).fadeOut(2000);
+        }
+                   
+        });
+});
+      
+    </script> 
+{%endblock%}

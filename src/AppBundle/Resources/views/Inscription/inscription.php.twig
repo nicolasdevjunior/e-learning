@@ -1,0 +1,88 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+
+<a href="#">login</a>
+<div class="section section-full-screen section-signup" style="background-image: url('assets/img/city.jpg'); background-size: cover; background-position: top center; min-height: 700px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="card card-signup">
+		{{form_start(form) }}
+						
+						<div class="header header-info text-center">
+							<h4>Inscrivez-vous</h4>
+						</div>
+			<div class="content">
+        <div class="input-group col-sm-6">
+            {{ form_errors(form)}}
+        </div>
+        <div class="input-group col-sm-6">
+             {% if err != "" %}
+             <div class="alert alert-danger">
+	           	                {{ err }}
+            </div>
+             {% endif %}
+        </div>
+		<div class="input-group col-sm-6">
+				<span class="input-group-addon">
+											<!--i class="material-icons">face</i!-->
+											Nom:
+				</span>
+				<div class="form-group is-empty">
+					{{form_widget(form.nom,{attr :{ class :'form-control',placeholder :'Votre nom ici..',minLength :'3'}}) }}
+				<span class="material-input"></span></div>
+			</div>
+
+			<div class="input-group col-sm-6">
+				<span class="input-group-addon">
+											<!--i class="material-icons">face</i!-->
+											Prenom:
+				</span>
+				<div class="form-group is-empty">
+					{{form_widget(form.prenom,{attr :{ class :'form-control',placeholder :'Votre prenom ici..'}}) }}
+				<span class="material-input"></span></div>
+			</div>
+
+			<div class="input-group col-sm-6">
+				<span class="input-group-addon">
+					<!--i class="material-icons">email</i!-->
+					Email:
+				</span>
+				<div class="form-group is-empty">
+					{{form_widget(form.email,{attr :{ class :'form-control',placeholder :'Votre mot email ici..'}}) }}
+				<span class="material-input"></span></div>
+			</div>
+
+			<div class="input-group col-sm-6">
+				<span class="input-group-addon">
+					<!--i class="material-icons">lock_outline</i!-->
+					Votre mot de passe:
+				</span>
+				<div class="form-group is-empty">
+					{{form_widget(form.password,{attr :{ class :'form-control',placeholder :'Votre mot de passe ici..'}}) }}
+				<span class="material-input"></span></div>
+			</div>
+
+			<div class="input-group col-sm-6">
+				<span class="input-group-addon">
+					<!--i class="material-icons">lock_outline</i!-->
+					Confirmé votre mot de passe:
+				</span>
+				<div class="form-group is-empty">
+				{{form_widget(form.vpassword,{attr :{ class :'form-control',placeholder :'Votre mot de passe ici..'}}) }}
+				<span class="material-input"></span></div>
+			</div>
+			
+			</div>
+		    <div class="footer text-center header-info">
+				{{form_widget(form.inscription,{attr :{ class :"btn btn-info btnwhite btn-lg"}}) }}
+			</div>
+			{{form_rest(form) }}
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
+
+{% endblock %}

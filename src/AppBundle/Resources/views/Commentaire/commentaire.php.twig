@@ -1,0 +1,12 @@
+{% extends "::base.html.twig" %}
+{% block title %}
+     Commenataire
+{% endblock %}
+
+{% block body %}
+
+{{ render(controller("AppBundle:Menu:index"))}}   
+{% include "AppBundle:Commentaire:commentaire_content.php.twig" %} 
+{% include "AppBundle:Default:footer.php.twig" %}
+
+{% endblock %}

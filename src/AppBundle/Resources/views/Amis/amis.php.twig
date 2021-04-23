@@ -1,0 +1,10 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+     Amis
+{% endblock  %}
+{% block body %}
+    {{ render(controller("AppBundle:Menu:index"))}}  
+    {% include "AppBundle:Amis:amis_content.php.twig" %} 
+    {% include "AppBundle:Default:footer.php.twig" %}
+{% endblock %}

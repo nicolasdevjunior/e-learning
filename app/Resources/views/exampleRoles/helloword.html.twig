@@ -1,0 +1,6 @@
+{% if app.user %}
+    Vous êtes connectez cher {{app.user.username}} en tant que utilisateur simple
+{% endif %}
+{% if app.user.hasRole('ROLE_ADMIN') %}
+    Tu es admin, toi seul peut voir ce message
+{% endif %}

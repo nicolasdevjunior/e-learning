@@ -1,0 +1,178 @@
+<section class="projet padd">
+	<div class="container ">
+		 <div class="row text-center padd">
+		 	 <div class="col-sm-4 col-xs-4">
+		 	 	<a href="#projets" title="projets" class="projeticons yellow" onclick="$('#projets').animatescroll();"><i class="fa fa-fw fa-book"></i></a>
+		 	 </div>
+		 	 <div class="col-sm-4 col-xs-4">
+		 	 	<a href="#tache" title="tache" class="projeticons bl" onclick="$('#tache').animatescroll();"><i class="fa fa-fw fa-calendar-times-o "></i></a>
+		 	 </div>
+		 	 <div class="col-sm-4 col-xs-4">
+		 	 	<a href="#rapport" title="rapport" class="projeticons purple" onclick="$('#rapport').animatescroll();"><i class="fa fa-fw fa-hourglass-2"></i></a>
+		 	 </div>
+		 </div>
+	</div>
+</section>
+<section id="projets">
+	<div class="container">
+	    <div class="row">
+	    	<h1 class="text-center text-info"><img src="{{asset('img/projects.png')}}"/>Mes projets</h1>
+	    	<hr>
+	    </div>
+		{% if all_project is not empty %}
+		<div class="row">
+			<div class="col-sm-2">
+				<p class="text-primary text-center">Mes projets</p>
+			</div>
+			<div class="col-sm-3">
+				<p class="text-primary text-center">Effectué</p>
+			</div>
+			<div class="col-sm-2">
+				<p class="text-primary text-center">Durée</p>
+			</div>
+			<div class="col-sm-2">
+				<p class="text-primary text-center">Date limite</p>
+			</div>
+			<div class="col-sm-3">
+				<p class="text-primary text-center">Nombre d'équipe</p>
+			</div>
+		</div>
+		{% for projet in all_project %}
+        <div class="row">
+			<div class="col-sm-2">
+				<p class="text-center">{{ projet.nomProjet|upper}}</p>
+			</div>
+			<div class="col-sm-3">
+				<div class="progress">
+				  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;min-width: 2em;">
+				    0%
+				  </div>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<p class="text-center">
+					{{projet.duree}}jours
+				</p>
+			</div>
+			<div class="col-sm-2">
+				<p class="text-center">{{ projet.dateLimite|date("d/m/Y")}}</p>
+			</div>
+			<div class="col-sm-3">
+				<p class="text-center">15pesonnes</p>
+			</div>
+		</div>
+		<div class="row text-center">
+			<a href="{{path('info_projet',{id:projet.id})}}" class="btn btn-info btn-xs">Voir plus</a>		
+		</div>
+		<hr>
+		{% endfor %}
+		{% endif %}
+		<div class="row text-center">
+			<button class="btn btn-info" data-toggle="modal" data-target="#add_project">Créer un projet</button>
+		<div class="center-block notification">
+                    <div class="text-center">
+                        <p id="chargement" class="text-info hidden"></p>
+                        <p id="success" class="text-success hidden"></p>
+                        <p id="erreurPub" class="text-danger hidden"></p>
+                    </div>   
+        </div> 
+	</div>
+</section>
+<hr>
+<section id="tache">
+	<div class="container">
+	    <div class="row">
+	    	<h1 class="text-center text-info"><img src="{{asset('img/tasklist.png')}}"/>Mes tâches</h1>
+	    	<hr>
+	    </div>
+		<div class="row">
+			<div class="col-sm-2">
+				<p class="text-primary text-center">Tâches</p>
+			</div>
+			<div class="col-sm-2">
+				<p class="text-primary text-center">Projet</p>
+			</div>
+			<div class="col-sm-2">
+				<p class="text-primary text-center">Temps restant</p>
+			</div>
+			<div class="col-sm-6">
+				<p class="text-primary text-center">Description</p>
+			</div>
+		</div>
+
+		<!-- <hr> -->
+		<div class="row">
+			<div class="col-sm-2">
+				<p class="text-center">Developpeur</p>
+			</div>
+			<div class="col-sm-2">
+				<p class="text-center">Licence</p>
+			</div>
+			<div class="col-sm-2">
+				<p class="text-center">15jours</p>
+			</div>
+			<div class="col-sm-6">
+				<p class="text-center"> Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum v vLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
+			</div>
+		</div>
+		<hr>
+		<div class="row text-center">
+			<button class="btn btn-info">Ajouter une tâche</button>
+		</div>
+	</div>
+</section>
+<hr>
+<section id="rapport">
+	<div class="container">
+		<div class="row">
+			<h1 class="text-center text-info"><img src="{{asset('img/timetracker.png')}}"/>Rapport</h1>
+	    	<hr>
+		</div>
+		<div class="row">
+			<div class="col-sm-2">
+				<h4 class="text-primary text-center">Projet</h4>
+			</div>
+			<div class="col-sm-2">
+				<h4 class="text-primary text-center">Jour</h4>
+			</div>
+			<div class="col-sm-2">
+				<h4 class="text-primary text-center">Debut</h4>
+			</div>
+            <div class="col-sm-2">
+				<h4 class="text-primary text-center">Fin</h4>
+			</div>
+			<div class="col-sm-2">
+				<h4 class="text-primary text-center">Heures</h4>
+			</div>
+			<div class="col-sm-2">
+				<h4 class="text-primary text-center">Description</h4>
+			</div>
+		</div>
+		<!-- <hr> -->
+		<div class="row">
+			<div class="col-sm-2">
+				<p class="text-center">Reseau social</p>
+			</div>
+			<div class="col-sm-2">
+				<p class="text-center">24/12/2018</p>
+			</div>
+			<div class="col-sm-2">
+				<p class="text-center">08:00</p>
+			</div>
+            <div class="col-sm-2">
+				<p class="text-center">17:00</p>
+			</div>
+			<div class="col-sm-2">
+				<p class="text-center">8h</p>
+			</div>
+			<div class="col-sm-2">
+				<p class="text-center">Conception uml</p>
+			</div>
+		</div>
+		<hr>
+		<div class="row text-center">
+			<button class="btn btn-info">Créer un rapport</button>
+		</div>
+		<hr>
+	</div>
+</section>

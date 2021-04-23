@@ -1,0 +1,87 @@
+<section class="cours padd">
+	<div class="container">
+		 <div class="row text-center">
+		 	 <div class="col-sm-3 col-xs-3">
+		 	 	<a href="#texte" title="cours texte"><i class="fa fa-file-text iconstext"></i></a>
+		 	 </div>
+		 	 <div class="col-sm-3 col-xs-3">
+		 	 	<a href="#pdf" title="cours pdf"><i class="fa fa-file-pdf-o iconspdf"></i></a>
+		 	 </div>
+		 	 <div class="col-sm-3 col-xs-3">
+		 	 	<a href="#video" title="cours video"><i class="fa fa-file-video-o iconsvideo"></i></a>
+		 	 </div>
+		 	 <div class="col-sm-3 col-xs-3">
+		 	 	<a href="#powerpoint" title="cours diaporama"><i class="fa fa-file-powerpoint-o iconspowerpoint"></i></a>
+		 	 </div>
+		 </div>
+	</div>
+</section>
+
+<section id="texte">
+	<div class="container">
+	    <div class="row">
+	    	<div class="center-block notification">
+                    <div class="text-center">
+                        <p id="chargement" class="text-info hidden"></p>
+                        <p id="success" class="text-success hidden"></p>
+                        <p id="erreurPub" class="text-danger hidden"></p>
+                    </div>   
+            </div> 
+	    </div>
+			{{form_start(form) }}
+	     <div class="row">
+				<div class="col-sm-6">
+                    <div class="form-group">
+                       <label>Titre</label>
+                        {{form_widget(form.titre,{attr :{ class :'form-control titre',placeholder :'titre ici..',minLength :'3'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Fichier</label>
+                        {{form_widget(form.fichier,{attr :{ class :'form-control fichier',placeholder :'Fichier ici..'}}) }}
+
+                        <span class="glyphicon glyphicon-cloud-upload"></span>
+                    </div>
+                </div>
+        </div>
+        <div class="row">
+				<div class="col-sm-6">
+                    <div class="form-group">
+                       <label>Type</label>
+                        {{form_widget(form.type,{attr :{ class :'form-control type',placeholder :'Type ici..',minLength :'3'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Contenu</label>
+                        {{form_widget(form.content,{attr :{ class :'form-control content',placeholder :'Contenu ici..'}}) }}
+                    </div>
+                </div>
+        </div>
+			 {{form_rest(form) }}
+
+	</div>
+</section>
+<section id="pdf">
+	<div class="container">
+		<div class="row">
+			
+		</div>
+	</div>
+</section>
+<section id="video">
+	<div class="container">
+		<div class="row">
+			
+		</div>
+	</div>
+</section>
+<section id="powerpoint">
+	<div class="container">
+		<div class="row">
+			
+		</div>
+	</div>
+</section>
+

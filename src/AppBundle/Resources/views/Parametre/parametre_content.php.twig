@@ -1,0 +1,81 @@
+<div class="container">
+	<div class="row">
+	{% block menu %}
+		<div class="col-sm-4">    
+		    <div class="card card-user">
+		        <div class="card-body">
+		            <div class="row center-block">
+			           <div class="col-sm-12 text-center">
+			               <a href="#paramContent" class="btn btn-info btn-block parametre">Paramètre</a>
+			           </div> 
+			        </div>
+			        <div class="row center-block">
+			           <div class="col-sm-12 text-center">
+			               <a href="#journal" class="btn btn-info btn-block groupe">Journal</a>
+			           </div> 
+		            </div>
+		            <div class="row center-block">
+			           <div class="col-sm-12 text-center">
+			               <a href="#pagesContent" class="btn btn-info btn-block pages">Pages</a>
+			           </div> 
+		            </div>
+		            <div class="row center-block">
+			           <div class="col-sm-12 text-center">
+			               <a href="#evenementContent" class="btn btn-info btn-block evenement">Evènement</a>
+			           </div> 
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	{%endblock%} 
+	{% block menuapparition%}
+	    <div class="col-sm-8">    
+		    <div class="card card-user">
+		        <div class="card-body">
+		            <div class="row center-block paramContent" id="paramContent">
+			          <div class="row center-block">  
+				           <div class="col-sm-12 text-center">
+				               <a href="{{path('fos_user_change_password')}}" class="text-info btn-block">Changer mot de passe</a>
+				           </div>
+			          </div>
+			          <hr>
+			          <div class="row center-block">  
+				           <div class="col-sm-12 text-center">
+				               <a href="#" class="text-info btn-block">Modifier mes informations</a>
+				           </div>
+			          </div>
+			          <hr>
+			        </div>
+			        <div class="row center-block hidden journal" id="journal">
+			           <div class="row center-block">
+				           <div class="col-sm-12 text-center">
+				               <a href="#" class="text-info btn-block">Mes publications</a>
+				           </div>
+				       </div>
+				       <hr>
+				       <div class="row center-block">
+				           <div class="col-sm-12 text-center">
+				               <a href="#" class="text-info btn-block">{{ 'Accès à mon journal'}}</a>
+				           </div>
+				       </div> 
+				       <hr> 
+			        </div> 
+			        <div class="row center-block hidden pagesContent" id="pagesContent">
+			           <div class="col-sm-6">
+			               
+			           </div>
+			           <hr>
+			        </div>
+			        <div class="row center-block hidden evenementContent" id="evenementContent">
+			           <div class="col-sm-6">
+			               
+			           </div>
+			            <hr>
+			        </div>
+			        
+		        </div>
+		    </div>
+		</div>
+	{%endblock%}
+	</div>
+</div>

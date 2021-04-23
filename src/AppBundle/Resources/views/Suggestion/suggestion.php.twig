@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+{% block title %}
+     Suggestion
+{% endblock %}
+
+{% block body %}
+       {% block menu %}
+           {% include "AppBundle:Default:nav.php.twig" %}
+       {% endblock %}
+{% include "AppBundle:Suggestion:suggestion_content.php.twig" %} 
+{% include "AppBundle:Default:footer.php.twig" %}
+
+{% endblock %}

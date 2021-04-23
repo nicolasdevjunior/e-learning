@@ -1,0 +1,86 @@
+<div class="contenu">
+            <div class="row text-center">
+                <div class="col-sm-12">
+                    <h5 class="title alert alert-info">Tous d'abord, il faut mettre à jour votre informations</h5>
+                </div>
+            </div>
+          {{form_start(form) }}
+			<div class="row">
+                <div class="col-sm-12">
+                     {{ form_errors(form)}}
+                </div>
+            </div>
+            <div class="row">
+				<div class="col-sm-6">
+                    <div class="form-group">
+                       <label>Nom</label>
+                        {{form_widget(form.nom,{attr :{ class :'form-control',placeholder :'Nom ici..',minLength :'3'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Prenom</label>
+                        {{form_widget(form.prenom,{attr :{ class :'form-control',placeholder :'Prenom ici..'}}) }}
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Ville</label>
+                        {{form_widget(form.ville,{attr :{ class :'form-control',placeholder :'Ville ici..'}}) }} 
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Lieu de naissance</label>
+                        {{form_widget(form.lieuNaissance,{attr :{ class :'form-control',placeholder :'Lieu ici..'}}) }} 
+                    </div>
+                </div>
+			</div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-12">
+                        <div class="form-group">
+                           <div class="col-sm-5">
+                           {{form_widget(form.annee,{attr :{ class :'form-control'}}) }}  
+                           </div>
+                           <div class="col-sm-3">
+                            {{form_widget(form.mois,{attr :{ class :'form-control'}}) }}   
+                           </div>
+                           <div class="col-sm-4">
+                           {{form_widget(form.jour,{attr :{ class :'form-control'}}) }}   
+                           </div>
+                        </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Activité ou filière</label>
+                        {{form_widget(form.activite,{attr :{ class :'form-control',placeholder :'Activité ici..'}}) }} 
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Categorie</label>
+                        {{form_widget(form.categorie,{attr :{ class :'form-control'}}) }} 
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Sex</label>
+                        {{form_widget(form.sex,{attr :{ class :'form-control'}}) }} 
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6 pr-1">
+                    {{form_widget(form.update,{attr :{ class :"btn btn-info btnwhite btn-lg"}}) }}
+                </div>
+            </div>
+        {{form_rest(form) }}
+</div>

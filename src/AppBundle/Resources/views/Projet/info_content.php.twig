@@ -1,0 +1,146 @@
+<section class="info padd">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 card-round">
+              	<div class="text-center contenu">
+              	   <h3 class="img-circle">{{ infoprojet.nomProjet|capitalize}}</h3>
+              	   <hr>
+                   <div class="text-center text-default">
+                      <p class="text-center">Crée <time class="timeago" datetime="{{ infoprojet.dateDebut|date }}">{{ infoprojet.dateDebut|date }}</time> par <a href="{{path('profile_amis',{id:infoprojet.fondateur})}}" class="text-info">{{ infoprojet.nomFondateur|capitalize }}</a></p>
+                   </div>
+              	   <p class="text-center text-success">
+              	   	  Durée du projet: {{ infoprojet.duree}}jours
+              	   </p>
+              	   <p class="text-info text-danger">Deadline:  {{ infoprojet.dateLimite|date("l/F/Y")}}</p>
+              	   <p class="text-center text-default">
+              	   	   {{ infoprojet.description}}
+              	   </p>
+              	   <p class="text-center">Les collaborateurs dans le projet: 1personne</p>
+              	</div>
+            </div>
+            <div class="col-sm-6 card-round">
+                <div class="contenu">
+                     <form method="POST" action="{{ path('publication') }}">
+                        <div class="row title">
+                            <h6>
+                                Donner votre avis sur le projet...
+                            </h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <textarea placeholder="inserer votre avis ici..." class="form-control contentPublier"></textarea>
+                                <input type="text" class="form-control idprojet hidden" name="id" value="{{ infoprojet.id}}">   
+                            </div>
+                            <div class="col-sm-2">
+                                <span class="pubIc step size-64">
+                                      <i class="icon ion-ios-paperplane creer blue"></i>
+                                </span>
+                            </div>
+                        </div>
+                     </form>
+                </div>
+                <div class="center-block notification">
+                    <div class="text-center">
+                        <p id="chargement" class="text-info hidden"></p>
+                        <p id="success" class="text-success hidden"></p>
+                        <p id="erreurPub" class="text-danger hidden"></p>
+                    </div>   
+                </div> 
+                <div class="contenu">
+                    <div class="row">
+                        <h2 class="text-center">Les avis sur le projet</h2>
+                    </div>
+                </div>
+                <hr>
+                {% if offset > 0 %}
+                <div class="row text-center">
+                   <a href="{{path('moins_avis',{'id':infoprojet.id,'lim':5,'offset':offset-5})}}" class="btn btn-default">
+                      Plus recents
+                   </a>
+                </div>
+                <hr>
+                {% endif %}
+                <div class="contenu contenuAvis hidden">
+                   <div class="avatarContent">
+                      <div class="row">
+                           <div class="col-sm-2">
+                               <img src="{{asset('img/pdpdefault/avatar2.png')}}" class="img-responsive img-circle text-center" width="50px" height="50px" />
+                           </div>
+                           <div class="col-sm-6">
+                              <h4>{{ app.user.nom|capitalize }} {{ app.user.prenom|capitalize }}</h4>
+                           </div>
+                           <div class="col-sm-4">
+                               <p class="pull-right created_at"><time class="timeago" datetime="{{ infoprojet.dateDebut|date }}">{{ infoprojet.dateDebut|date }}</time></p>
+                           </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                          <div class="col-sm-12 contentAvis">
+                               <p class="text-center content"></p>
+                          </div>
+                      </div>
+                   </div>
+                </div>
+                {% for avisProjet in avis %}
+                <div class="contenu">
+                   <div class="avatarContent">
+                      <div class="row">
+                           <div class="col-sm-2">
+                               <img src="{{asset('img/pdpdefault/avatar2.png')}}" class="img-responsive img-circle text-center" width="50px" height="50px" />
+                           </div>
+                           <div class="col-sm-6">
+                              <a href="{{path('profile_amis',{id:avisProjet.idUser})}}" class="text-info">{{ avisProjet.nomUser|capitalize }}</a>
+                           </div>
+                           <div class="col-sm-4">
+                               <p class="pull-right created_at"><time class="timeago" datetime="{{ avisProjet.dateAvis|date }}">{{ avisProjet.dateAvis|date }}</time></p>
+                           </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                          <div class="col-sm-12 contentAvis">
+                               <p class="text-center content">{{ avisProjet.avis }}</p>
+                          </div>
+                      </div>
+                   </div>
+                </div>
+                <hr>
+                {% endfor %}
+                {% if offset+5 < count %}
+                <div class="row text-center">
+                   <a href="{{path('plus_avis',{'id':infoprojet.id,'lim':5,'offset':offset+5})}}" class="btn btn-default">
+                      Plus anciens
+                   </a>
+                   <hr class="visible-xs">
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-sm-3 card-round">
+                 <div class="contenu text-center">
+                    <div class="row">
+                        <a href="#" class="btn btn-default">
+                         Faire partie du projet
+                        </a>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <a href="#" class="btn btn-default">
+                         Ajouter un membre
+                        </a>
+                    </div>
+                     <hr>
+                    <div class="row">      
+                        <a href="#" class="btn btn-default">
+                             Ajouter une tache
+                        </a>
+                    </div>
+                     <hr>
+                    <div class="row">
+                        <a href="#" class="btn btn-default">
+                             Ajouter un rapport du projet
+                        </a>
+                    </div>
+                 </div>
+            </div>
+        </div>	
+    </div>
+</section>

@@ -1,0 +1,28 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+     Maintenance
+{% endblock  %}
+{% block body %}
+{{ render(controller("AppBundle:Menu:index"))}}
+<div class="container"> 
+	 <div class="row">   
+	   <div class="col-sm-12">   
+	      <h3 class="text-danger text-center">La page que vous demandez n'est pas disponible pour le moment en raison de la maintenance</h3> 
+	   </div>
+	 </div>
+	 <div class="row">   
+	   <div class="col-sm-4">   
+	      <img src="{{asset('img/settings.png')}}" class="img-responsive"/>
+	   </div>
+	   <div class="col-sm-4">   
+	      <img src="{{asset('img/settings-3.png')}}" class="img-responsive"/>
+	       <img src="{{asset('img/settings-9.png')}}" class="img-responsive"/>
+	   </div>
+	   <div class="col-sm-4">   
+	      <img src="{{asset('img/settings-4.png')}}" class="img-responsive"/>
+	   </div>
+	 </div>
+ </div>  
+    {% include "AppBundle:Default:footer.php.twig" %}
+{% endblock %}

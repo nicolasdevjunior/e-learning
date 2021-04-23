@@ -1,0 +1,21 @@
+<a class="text-info">
+{% if userQuiAime is not empty %}  
+  {% if current_user is not empty %} 
+     Vous,
+  {% endif %}
+  {% for user in userQuiAime %}
+      {{ user.nom|e|capitalize }} {{ user.prenom|e|capitalize }},
+  {% endfor %}
+  {% if nombre >= 2 %} 
+     et {{nombre}} autres personnes aiment 
+  {% endif %}
+  {% if nombre == 1 %}
+     {{nombre}} autre personne aiment 
+  {% endif %}
+{% else %}
+  {% if current_user is not empty %} 
+     Vous aimez
+  {% endif %}
+{% endif %}
+
+</a>

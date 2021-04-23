@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="card">
+	    <div class="card-body">
+	      <div class="row">
+	         <div class="col-sm-12"> 
+			   
+			   {% if infouser is not empty %}
+			   		<h5 class="text-info">Vous avez {{ all_amis }} amis</h5>
+			   {% else %}
+			       <h5 class="text-danger">Vous n'avez pas encore d'amis pour le moment,
+			       veullez ajouter les personnes que vous connaissez dans 
+			       <a href="{{path('suggestion')}}" class="text-info">Suggestion</a></h5>
+			   {% endif %}
+			   
+			</div>
+		  </div>
+		<div class="row">
+	         <div class="col-sm-8"> 
+	   {% for info in infouser %}
+	    <div class="row">     
+	        <div class="col-sm-2"> 
+		   		{% if info.sex == 1 %}     
+			        <img class="avatar" src="{{asset('img/pdpdefault/h_sexe.jpg')}}" alt="..." width="100px" height="100px">
+			    {% else %}
+			        <img class="avatar" src="{{asset('img/pdpdefault/f_sexe.jpg')}}" alt="..." width="100px" height="100px">
+			    {% endif %}
+		    </div>
+		    <div class="col-sm-3"> 
+		    {% if info.nom is empty %}
+		    <a href="{{path('profile_amis',{id:info.id})}}" class="text-info">{{info.username}}</a><br/>
+		    {% else %}
+		    <a href="{{path('profile_amis',{id:info.id})}}" class="text-info">{{info.nom}}  {{info.prenom}}</a><br/>
+		    {% endif %}
+		    </div>
+		    <div class="col-sm-2"> 
+			  <a href="{{path('retirerAmis',{id:info.id,url:'amis'})}}" class="btn btn-danger btn-sm hidden-xs">Retirer</a>
+
+			  <hr class="visible-xs">
+			  <a href="{{path('retirerAmis',{id:info.id,url:'amis'})}}" class="text-danger visible-xs">Retirer</a>
+		    </div>
+		</div> 
+		<hr>
+	   {% endfor %}
+	         </div>
+	      </div>
+	    </div>
+	</div>
+</div>

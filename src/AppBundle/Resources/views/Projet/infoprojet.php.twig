@@ -1,0 +1,83 @@
+ {% extends "::base.html.twig" %}
+
+{% block title %}
+     Projet
+{% endblock %}
+
+{% block body %}   
+    {% block menu %}
+        {% include "AppBundle:Default:nav.php.twig" %}
+    {% endblock %}
+
+    {% include "AppBundle:Projet:info_content.php.twig" %} 
+
+    {% block footer %}
+        {% include "AppBundle:Default:footer.php.twig" %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(document).ready(function()
+    {
+    	 $("time.timeago").timeago();
+
+            $(".creer").click(function(e){
+                e.preventDefault();
+                var content = $('.contentPublier').val();
+                var idprojet = $('.idprojet').val();
+                var now = moment().format("YYYY-MM-DD HH:mm:ss");
+            if(content !="" && idprojet !="")
+            {
+                $.ajax({
+                    url: "{{path('avis_projet')}}",
+                    type: 'POST',
+                    data:
+                    {
+                        now : now,
+                        content : content, 
+                        idProjet : idprojet
+                    }, 
+                    beforeSend: function()
+                    {
+                        console.log('chargement...');
+                        $('#chargement').removeClass("hidden");
+                        $('#chargement').html('chargement de votre avis...');
+                    },
+                    success:function(data)
+                    {
+                      console.log(data);
+                      $('.contentPublier').val("");
+                      $('#chargement').addClass("hidden");
+                      $('#success').removeClass("hidden"); 
+                      $('#success').html('Avis publié avec succès...');
+                      $("#success").delay(4000).fadeOut(1000); 
+                      //location.reload();
+                      var avis = $(".contenuAvis").clone();
+                      avis.find(".content").html(data.content);
+                      avis.find(".created_at").html(now);
+                      avis.removeClass("hidden");
+                      avis.show();
+                      $(".contenuAvis").after(avis);
+                      location.reload();
+                     },
+                     error:function()
+                     {
+                        $('#chargement').addClass("hidden");
+                        $('#success').addClass("hidden"); 
+                        $('#erreurPub').removeClass("hidden");
+                        $('#erreurPub').html('Nous ne pouvons pas publié votre avis pour l\'instant...');
+                     }  
+                }); 
+            }else{
+                $('#erreurPub').removeClass("hidden");
+                $('#erreurPub').html('Veullez remplir les champs requis...');
+                $('#erreurPub').delay(4000).fadeOut(2000);
+            }
+                       
+            });
+    });
+</script>  
+
+{% endblock %}  	 

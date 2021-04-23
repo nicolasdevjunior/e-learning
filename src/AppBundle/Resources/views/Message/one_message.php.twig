@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+     Message
+{% endblock  %}
+{% block body %}
+    {{ render(controller("AppBundle:Menu:index"))}}  
+    {% include "AppBundle:Message:one_message_content.php.twig" %} 
+    {% include "AppBundle:Default:footer.php.twig" %}
+{% endblock %}
+{% block javascript %}
+<script>
+$(document).ready(function()
+{
+    $("time.timeago").timeago();
+});
+    	
+</script> 
+{%endblock%}

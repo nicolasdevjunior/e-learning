@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />  
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="{{asset('css/appStyle/bootstrap3/css/bootstrap.css')}}"/>
+    <link rel="stylesheet" href="{{asset('js/datepicker/jquery.datetimepicker.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/elearning.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/personnalisation.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/fonts/font-awesome-4.5.0/css/font-awesome.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/ionicons.css')}}" />
+    
+    <script type="text/javascript" src="{{ asset('js/jquery-1.10.0.min.js') }}"></script>
+    <script src="{{ asset('js/animatescroll.min.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ asset('js/jquery-3.2.0.min.js') }}"></script> -->
+    
+    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{asset('js/datepicker/jquery.datetimepicker.full.min.js')}}"></script>
+       <script src="{{asset('js/timestamp/moment.js')}}"></script>
+    <!-- <script src="{{asset('js/timestamp/livestamp.min.js')}}"></script> -->
+    <script src="{{asset('js/timestamp/moment.fr.js')}}"></script>
+
+    
+</head>
+
+<body class="w3-theme-l5">
+    {% block content%}{%endblock%}
+    {% block body%}
+        {% block menu%}{%endblock%}
+        {% block header %}{%endblock%}
+        {% block contenu %}{%endblock%}
+        {% block menuapparition %}{%endblock%}
+        {% block infouser%}{%endblock%}
+        {% block journaluser%}{%endblock%}
+        {% block footer %}{% endblock%}
+    {%endblock%}
+    {% block modal %}{% endblock %}
+    {% block javascript %}
+    {%endblock%}
+   <script src="{{asset('js/timeago/jquery.timeago.js')}}"></script>
+     <script src="{{asset('js/timeago/jquery.timeago.fr.js')}}"></script>
+</body>
+
+

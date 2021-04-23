@@ -1,0 +1,217 @@
+p,h1,h2,h3,h4,h5,strong,span{
+  font-family: "Times New Roman";
+}
+.step:hover i { opacity: .3; }
+  .size-12 { font-size: 12px; }
+  .size-14 { font-size: 14px; }
+  .size-16 { font-size: 16px; }
+  .size-18 { font-size: 18px; }
+  .size-21 { font-size: 21px; }
+  .size-24 { font-size: 24px; }
+  .size-32 { font-size: 32px; }
+  .size-48 { font-size: 48px; }
+  .size-64 { font-size: 64px; }
+  .size-96 { font-size: 96px;}
+.hrPers
+{
+  margin-top: 6px;
+  margin-bottom: 9px;
+}
+.mess
+{
+  border: 1px solid #dedede;
+  margin: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.state
+{
+  padding: 10px 0 10px;
+  background-color: #dedede;
+}
+.pers
+{
+  border: 1px solid #dedede;
+  margin: 5px;
+}
+.option
+{
+  border: 1px solid #dedede;
+}
+.bgray
+{
+    background-color: grey;
+}
+.borange{
+    background-color: #ff5e3a;
+}
+.brose{
+   background-color: #ff3aa0;
+}
+.bblue
+{
+  background-color: #03a9f4;
+}
+.bpurple
+{
+  background-color: #7c5ac2;
+}
+.bgreen{
+  background-color: #4caf50;
+}
+.bred{
+  background-color: #f44336;
+}
+
+.gray
+{
+    color: grey;
+}
+.orange{
+    color: #ff5e3a;
+}
+.rose{
+   color: #ff3aa0;
+}
+.green{
+  color: #4caf50;
+}
+.blue
+{
+  color: #03a9f4;
+}
+.purple
+{
+  color: #7c5ac2;
+}
+.iconsnotify
+{
+  position: relative;
+}
+.notificationsStatut
+{
+  position: absolute;
+  top: 6px;
+  right: 23px;
+  color: #fff;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 10px;
+font-weight: 700;
+}
+.avatar
+{
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    padding: 0px;
+    border-radius: 50%;
+}
+.publier{
+  cursor: pointer;
+}
+#register-navbar a {
+    color: #FFF;
+}
+.img-circle
+{
+    padding: 0px;
+    width:100px;
+    height :100px;
+}
+.btnwhite
+{
+	color: white;
+}
+#fos_user_registration_form_plainPassword_second
+{
+   display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+#fos_user_registration_form_plainPassword_first
+{
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.form-control {
+    background-color: #fffcf5;
+    }
+.loginsection{
+    background-color: #03a9f4;
+    border-radius: 8px;
+    color: white;
+    padding: 30px;
+}
+#register-navbar a {
+    color: #FFF;
+}
+.fondaccueil
+{
+    margin-bottom: 20px;
+}
+.card-user .image
+{
+    background-color: #03a9f4;
+}
+.mpuser{
+  width: 70%;
+  word-wrap: break-word;
+  word-break: keep-all;
+  overflow: hidden;
+  padding: 10px 0 10px; 
+  text-overflow: ellipsis;
+  font-family: "Times New Roman";
+  font-size: 18px;
+}
+.notifaffichage
+{
+  width: 100%;
+  word-wrap: break-word;
+  word-break: keep-all;
+  overflow: hidden;
+  padding: 10px 0 10px; 
+  text-overflow: ellipsis;
+  font-family: "Times New Roman";
+  font-size: 18px;
+  white-space: nowrap; 
+}

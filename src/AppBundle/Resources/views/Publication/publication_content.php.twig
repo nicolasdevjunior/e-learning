@@ -1,0 +1,52 @@
+<div class="container">
+	<div class="card">
+	    <div class="card-body">
+	       <div class="row">
+			 <div class="col-sm-12"> 
+				 <div class="row">
+				 	<div class="col-sm-12 col-sm-offset-1">
+				{% if pub.id == app.user.id %}
+					{% if pub.nom is empty %}
+					  <a href="{{path('profile_homepage')}}" class="text-info">{{pub.username|capitalize}}</a><br/>
+					{% else %}
+					  <a href="{{path('profile_homepage')}}" class="text-info">{{pub.nom|capitalize}}  {{pub.prenom|capitalize}}</a><br/>
+					 {% endif %}
+				{% else %}
+				      {% if pub.nom is empty %}
+					  <a href="{{path('profile_amis',{id:pub.id})}}" class="text-info">{{pub.username|capitalize}}</a><br/>
+					{% else %}
+					  <a href="{{path('profile_amis',{id:pub.id})}}" class="text-info">{{pub.nom|capitalize}}  {{pub.prenom|capitalize}}</a><br/>
+					 {% endif %}
+			    {% endif %}
+				 	</div>
+				 </div>
+				 <div class="row">
+                    <div class="mpuser col-sm-12 col-sm-offset-1">
+                        {{ pub.content|e|nl2br }}
+                    </div>   
+                 </div>
+                 <div class="row">
+                    <div class="col-sm-7 col-sm-offset-1">
+                      {% if pub.jaime > 0 %}
+                          {{ pub.jaime }}
+                      {% endif %}
+                      {{ render(controller("AppBundle:ProfileAmis:ifSomeoneWasLikedSomePubAmis",{'idpub' :pub.idPub,'idP':pub.id,'page':page})) }}
+
+                      {% if pub.commentaires > 0 %}
+                        <a href="{{path('commentairePub',{'idcoms':pub.id})}}" class="text-primary">Commentaire({{ pub.commentaires }})
+                        </a>
+                      {% else %}
+                        <a href="{{path('commentairePub',{'idcoms':pub.id})}}" class="text-primary">Commentaire
+                        </a>
+                      {% endif %}
+                    </div> 
+                    <div class="col-sm-4">
+                        <strong>
+                        <time class="timeago" datetime="{{ pub.created_at|date }}">{{ pub.created_at|date }}</time></strong>
+                    </div>   
+                </div>
+	         </div>
+	        </div>
+	    </div>
+	</div>
+</div>

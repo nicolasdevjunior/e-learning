@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+     Publication
+{% endblock  %}
+{% block body %}
+    {{ render(controller("AppBundle:Menu:index"))}}  
+    {% include "AppBundle:Publication:publication_content.php.twig" %} 
+    {% include "AppBundle:Default:footer.php.twig" %}
+{% endblock %}
+{% block javascript %}
+<script>
+$(document).ready(function()
+{
+    $("time.timeago").timeago();
+});
+    	
+</script> 
+{%endblock%}

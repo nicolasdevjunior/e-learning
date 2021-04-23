@@ -1,0 +1,171 @@
+{% extends "::base.html.twig" %}
+{% block title %}
+    login page
+{% endblock %}
+{% block body %}
+	 {% block menu%}
+	 <nav class="navbar navbar-default navbar-color navbar-ct-transparent navbar-relative " role="navigation-demo" id="register-navbar">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="{{path('profile_homepage')}}">
+	            <img src="{{asset('img/logo/logo.png')}}" class="logo img-responsive" width="80px*" height="80px"/>
+	          </a>
+	        </div>
+	    
+	        <!-- Collect the nav links, forms, and other content for toggling -->
+	        <div class="collapse navbar-collapse" id="navigation-example-2">
+	          <ul class="nav navbar-nav navbar-right">
+	            <li class="">
+	                <a href="#" class="" title="messages">
+	                   Accueil
+	                </a>
+	            </li> 
+	            <li class="">
+	                <a href="#" class="" title="messages">
+	                   Parcours
+	                </a>
+	            </li> 
+	            <li class="">
+	                <a href="#" class="" title="messages">
+	                   Blog
+	                </a>
+	            </li> 
+	            <li class="">
+	                <a href="#" class="" title="messages" data-toggle="modal" data-target="#connecter">
+	                   Connexion
+	                </a>
+	            </li> 
+	            <li class="lien">
+	                <button class="btn btn-info navbar-btn" data-toggle="modal" data-target="#inscrire">Inscription</button>
+	            </li>   
+	           </ul>
+	        </div><!-- /.navbar-collapse -->
+	      </div><!-- /.container-->
+	 </nav>
+	 {%endblock%}
+	 {% block header %}
+     <section class="header">
+     	 <div class="container">
+     	 	 <h3 class="titre_header text-center">{{ "Developpez gratuitement vos compétences en ligne"|upper}} </h3>
+     	 	 <input type="text" name="search" placeholder="      Que souhaitez-vous apprendre?" class="form-control search_input visible-xs"/>
+     	 	 <hr class="visible-xs">
+     	 	 <input type="submit" class="btn btn-info search_btn btn-xs visible-xs" value="Rechercher" class="form-control"/>
+     	 	 <div class="row search_content hidden-xs">
+     	 	    <div class="col-sm-12">
+	     	 	 	<div class="col-sm-6 col-sm-offset-2 search">
+	     	 	 	   <input type="text" name="search" placeholder="      Que souhaitez-vous apprendre?" class="form-control search_input"/>
+	     	 	 	</div> 
+	     	 	 	<div class="col-sm-3 search">
+	     	 	 	 	<input type="submit" class="btn btn-info search_btn" value="Rechercher" class="form-control"/>
+	     	 	 	 </div>
+     	 	    </div>
+     	 	</div>
+     	 	<div class="row text-center">
+                <hr class="visible-xs">
+     	 		<a href="#" class="btn btn-xs rejoindre visible-xs">{{ "Rejoindre la communauté"}}</a>
+     	 		<a href="#" class="btn btn-lg rejoindre hidden-xs">{{ "Rejoindre la communauté"}}</a>
+     	 	</div>
+     	 </div>
+     </section>
+	 {%endblock%}
+	 {% block contenu %}
+     <section class="contenu">
+     	 <div class="container">
+     	 	 <p class="text-center calligraphy elearningText hidden-xs">E-learning</p>
+     	 	 <h3 class="visible-xs text-center calligraphy colorVerte">E-learning</h3>
+     	 	 <h3 class="text-center calligraphy thirdTitle">Cours gratuit , simple et complet </h3>
+     	 	 <p class="text-center calligraphy">Une plateforme en ligne que les apprenants et les étudiants vont adorer</p>
+     	 	 <p class="text-center calligraphy">Disponible en quelque minutes, gratuitement et multi-platforme(PC, tablette , smartphone)</p>
+     	 </div>
+     </section>
+     <section class="atous alert alert-info">
+     	 <div class="container">
+     	 	<div class="row">
+     	 		<div class="col-sm-4">
+     	 			<img src="{{asset('img/etud.png')}}" class="img-responsive imgcentre" width="40%" height="40%" />
+     	 			<h2 class="text-center calligraphy hidden-xs">Apprenants</h2>
+     	 			<h5 class="text-center calligraphy visible-xs">Apprenants</h5>
+     	 			<p class="text-center">Très facile à utiliser,nous l'avons conçus pour le plaisir de l'apprentissage en ligne</p>
+     	 		</div>
+     	 		<div class="col-sm-4">
+     	 		    <img src="{{asset('img/prof.png')}}" class="img-responsive imgcentre" width="40%" height="40%" />
+     	 			<h2 class="text-center calligraphy hidden-xs">Instructeurs</h2>
+     	 			<h5 class="text-center calligraphy visible-xs">Instructeurs</h5>
+     	 			<p class="text-center">Vous pouvez gérer facilement vos cours,partager des ressources en multi-format</p>
+     	 		</div>
+     	 		<div class="col-sm-4">
+     	 		    <img src="{{asset('img/admin.png')}}" class="img-responsive imgcentre" width="40%" height="40%" />
+     	 			<h2 class="text-center calligraphy hidden-xs">Administrateur</h2>
+     	 			<h5 class="text-center calligraphy visible-xs">Administrateur</h5>
+     	 			<p class="text-center white">administration simple avec des fonctionnalités évolué et performent</p>
+     	 		</div>
+     	 	</div> 
+     	 	 
+     	 	 
+     	 </div>
+     </section>
+     <section class="format">
+     	 <div class="container">
+     	 	 <h2 class="text-center text-white hidden-xs">Choisir un ou plusieur format de cours</h2>
+     	 	 <h4 class="text-center text-white visible-xs">Choisir un ou plusieur format de cours</h4>
+     	 	 <p class="text-center calligraphy">Vous avez le choix entre une multitudes de format : pdf,texte,videos, diaporama ou des liens.</p>
+     	 </div>
+     </section>
+	 {%endblock%}
+	 {% block footer %}
+     <section class="footer">
+    	<div class="container">
+    		<div class="col-sm-3">
+    			<p class="text-center">&copy 2018 By Nicolas|<span class="calligraphy">E-learning</span></p>
+    		</div>
+    		<div class="col-sm-4 pull-right">
+    			<p class="text-center"></p>
+    		</div>
+    	</div>
+     </section>
+     <!-- Modal -->
+     <!-- Se connecter -->
+		<div class="modal fade" id="connecter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title text-center" id="myModalLabel">Se connecter</h4>
+		      </div>
+		      <div class="modal-body">
+		        ...
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	<!-- S'inscrire -->
+		<div class="modal fade" id="inscrire" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title text-center" id="myModalLabel">S'inscrire</h4>
+		      </div>
+		      <div class="modal-body">
+		        ...
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+     <!--modal-->
+	 {% endblock %}
+{% endblock %}

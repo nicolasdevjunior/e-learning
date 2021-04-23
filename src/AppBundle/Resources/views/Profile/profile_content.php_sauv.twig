@@ -1,0 +1,81 @@
+<div class="container">
+	{% if message_tmp is empty %}
+	{% else %}
+    <div class="row">
+	   <div class="col-sm-12 alert alert-success">
+		  {{ message_tmp }}
+	   </div>
+    </div>
+   {% endif %}
+ 
+
+<div class="row">
+{% block infouser%}
+	<div class="col-sm-4">    
+	    	<div class="card card-user">
+	            <div class="image">
+	                <!--img src="{{asset('img/pdpdefault/h_sexe.jpg')}}" alt="..."-->
+	            </div>
+	            <div class="card-body">
+		            <div class="author"> 
+		               {% if app.user.sex == 1 %}  
+		                <img class="avatar border-gray parentpdp" src="{{asset('img/pdpdefault/h_sexe.jpg')}}" alt="...">
+		                {% else %}
+		                <img class="avatar border-gray parentpdp" src="{{asset('img/pdpdefault/f_sexe.jpg')}}" alt="...">
+		                {% endif %}
+		                <h5 class="title">
+		         {% if check_update == 1 %}
+                      {{ app.user.nom }} {{ app.user.prenom }}
+		         {% endif %}
+		                 </h5>
+		            <p class="description">
+		                Username: <strong>{{ app.user.username }}</strong>
+		            </p>
+		            </div>
+		            <p class="description text-center">
+		          {% if check_update == 1 %}
+                     Né le : <strong>{{ app.user.jour }}/{{ app.user.mois }}/{{ app.user.annee }} à {{ app.user.lieunaissance }}</strong>
+		          {% endif %} 
+		            </p>
+		            <p class="description text-center">
+		          {% if check_update == 1 %}
+    					<span class="step size-16
+    					">
+					      <i class="icon ion-ios-location"></i>
+					    </span>
+    					<strong>{{ app.user.ville }}</strong>
+    					
+		          {% endif %} 
+		            </p>
+		            <p class="description text-center">
+		          {% if check_update == 1 %}
+                     {% if app.user.sex == 1 %}
+                     	Sex : <strong>Homme</strong>
+                     {% else %}
+                     	Sex : <strong>Femme</strong>
+                     {% endif %} 
+		          {% endif %} 
+		            </p>
+		            <p class="description text-center">
+		             {% if app.user.bio is not empty %}
+                          {{ app.user.bio }}
+                     {% else %}
+                          Aucun bio pour le moment
+		             {% endif %} 
+		            </p>
+	            </div>
+	            <hr/>
+	        </div>
+	</div>
+{%endblock%} 
+{% block journaluser %}
+	<div class="col-sm-8">    
+      {% if check_update == 1 %}
+	     {% include "AppBundle:Profile:journal.php.twig" %}
+      {% else %}
+        {% include "AppBundle:Profile:edit_profile.php.twig" %}
+      {% endif %}
+    </div>
+{%endblock%}  
+</div>
+</div>

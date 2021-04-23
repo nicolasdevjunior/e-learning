@@ -1,0 +1,93 @@
+
+<div class="card">
+    <div class="card-body">
+      <div class="row">
+                  <form method="POST" action="{{ path('publication') }}">
+                    <div class="col-sm-8 col-sm-offset-1">
+                        <textarea rows="30" cols="20" placeholder="inserer votre publication ici..." class="form-control contentPublier"></textarea>      
+                    </div>   
+                    <div class="col-sm-3">
+                        <span class="pubIc step size-64">
+                          <i class="icon ion-ios-paperplane publier blue"></i>
+                        </span>
+                    </div> 
+                 </form>
+      </div>
+      <div class="row center-block">
+          <div class="col-sm-12 text-center">
+             <p id="chargement" class="text-info hidden"></p>
+             <p id="success" class="text-success hidden"></p>
+             <p id="erreurPub" class="text-danger hidden"></p>
+          </div>   
+      </div>
+      <div id="ajoutPublications" class="justclick hidden"> 
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-1">
+                        <strong>{{ app.user.nom|e|capitalize }} {{ app.user.prenom|e|capitalize }}</strong>
+                    </div>
+                </div>
+                <div class="row">
+                   <div class="contentPub col-sm-12 col-sm-offset-2">
+                        
+                   </div>   
+                </div>
+                <div class="row">
+                    <div class="col-sm-7 col-sm-offset-1">
+                      <a href="{{path('jaime',{'id':'un'})}}" class="text-primary jaime">J'aime
+                      </a>
+                      <a href="{{path('commentairePub',{'idcoms':'un'})}}" class="text-primary commentaire">Commentaire
+                      </a>
+                      <a href="{{path('supprimer',{'id':'un'})}}" class="text-danger supprimer">Supprimer
+                      </a>
+                    </div> 
+                    <div class="col-sm-4">
+                        <strong class="created_at">
+                        </strong>
+                    </div>   
+                </div>
+                <hr>
+      </div>
+            {% for pub in publications %}
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-1">
+                        <strong>{{ pub.nom|e|capitalize }} {{ pub.prenom|e|capitalize }}</strong>
+                    </div>
+                </div>
+                <div class="row">
+                   <div class="mpuser col-sm-12 col-sm-offset-2">
+                        <p>{{ pub.content|e|nl2br }}</p>
+                    </div>   
+                </div>
+                <div class="row">
+                   <div class="col-sm-12 col-sm-offset-1">
+                      {{ render(controller("AppBundle:Operation:personnequiaime",{'idPub' :pub.id})) }}
+                    </div>   
+                </div>
+                <div class="row">
+                    <div class="col-sm-7 col-sm-offset-1">
+                      {% if pub.jaime > 0 %}
+                          {{ pub.jaime }}
+                      {% endif %}
+                      {{ render(controller("AppBundle:Profile:ifSomeoneWasLikedSomePub",{'idpub' :pub.id})) }}
+
+                      {% if pub.commentaires > 0 %}
+                        <a href="{{path('commentairePub',{'idcoms':pub.id})}}" class="text-primary">Commentaire({{ pub.commentaires }})
+                        </a>
+                      {% else %}
+                        <a href="{{path('commentairePub',{'idcoms':pub.id})}}" class="text-primary">Commentaire
+                        </a>
+                      {% endif %}
+                        
+                        <a href="{{path('supprimer',{'id':pub.id})}}" class="text-danger">Supprimer
+                        </a>
+                    </div> 
+                    <div class="col-sm-4">
+                        <strong>
+                        <time class="timeago" datetime="{{ pub.created_at|date }}">{{ pub.created_at|date }}</time></strong>
+                    </div>   
+                </div>
+                <hr>
+            {% endfor %}
+    </div>
+</div>
+

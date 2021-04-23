@@ -1,0 +1,61 @@
+<div class="container">
+	<div class="row">
+	{% block menu %}
+		<div class="col-sm-4">    
+		    <div class="card card-user">
+		        <div class="card-body">
+		            <div class="row center-block">
+			           <div class="col-sm-12 text-center">
+			               <a href="#paramContent" class="btn btn-info btn-block parametre">Paramètre</a>
+			           </div> 
+			        </div>
+			        <div class="row center-block">
+			           <div class="col-sm-12 text-center">
+			               <a href="#groupeContent" class="btn btn-info btn-block groupe">Groupes</a>
+			           </div> 
+		            </div>
+		            <div class="row center-block">
+			           <div class="col-sm-12 text-center">
+			               <a href="#pagesContent" class="btn btn-info btn-block pages">Pages</a>
+			           </div> 
+		            </div>
+		            <div class="row center-block">
+			           <div class="col-sm-12 text-center">
+			               <a href="#evenementContent" class="btn btn-info btn-block evenement">Evènement</a>
+			           </div> 
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	{%endblock%} 
+	{% block menuapparition%}
+	    <div class="col-sm-8">    
+		    <div class="card card-user">
+		        <div class="card-body">
+		            <div class="row center-block paramContent" id="paramContent">
+			           <div class="col-sm-6">
+			               <a href="#" class="btn btn-info btn-block">Modifier informations</a>
+			           </div>
+			        </div>
+			        <div class="row center-block hidden groupeContent" id="groupeContent">
+			           <div class="col-sm-6">
+			               <a href="#" class="btn btn-info btn-block">Confidentialité</a>
+			           </div> 
+			        </div> 
+			        <div class="row center-block hidden pagesContent" id="pagesContent">
+			           <div class="col-sm-6">
+			               <a href="#" class="btn btn-info btn-block">Modifier mot de passe</a>
+			           </div>
+			        </div>
+			        <div class="row center-block hidden evenementContent" id="evenementContent">
+			           <div class="col-sm-6">
+			               <a href="#" class="btn btn-info btn-block">Près de chez vous</a>
+			           </div>
+			        </div>
+			        <hr>
+		        </div>
+		    </div>
+		</div>
+	{%endblock%}
+	</div>
+</div>

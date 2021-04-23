@@ -1,0 +1,8 @@
+ {% if likedOrNone == 0 %}   
+    <a href="{{path('jaime',{'id':pub})}}" class="text-info">J'aime
+                        </a>
+ {% else %}
+    <a href="{{path('jenaimeplus',{'id':pub})}}" class="text-success">Je n'aime plus
+                        </a>
+{% endif %}
+

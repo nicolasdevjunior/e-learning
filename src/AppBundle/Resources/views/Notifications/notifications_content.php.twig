@@ -1,0 +1,58 @@
+<div class="container">
+	<div class="card">
+	    <div class="card-body">
+	       <div class="row">
+			 <div class="col-sm-12 text-center"> 
+				 <h3 class="text-info">Mes notifications</h3>
+	         </div>
+	      </div>
+	    </div>
+	</div>
+	{% if allnotifications is empty %}
+	<div class="card">
+		<div class="card-body">	
+			<div class="row">
+			   <div class="col-sm-12 text-center">	
+				  <h5 class="text-info">Aucune nouvelle pour l'instant</h5>
+			   </div>
+		    </div>
+		</div>
+	</div>
+	{% else %}
+	{% for notif in allnotifications %}
+		{% if notif.subject == "jaime" %}
+<a href="{{path('affichePub',{'idPub':notif.idPub})}}" class="text-primary " title="veullez cliques ici si vous voulez voir cette publication">
+	<div class="card">
+	   <div class="card-body">
+		<div class="row">
+			<div class="col-sm-8">
+			  <p class="text-info">
+			    {% if notif.nom is empty %}
+				<strong>{{notif.username|capitalize}}</strong>
+				{% else %}
+				<strong>{{notif.nom|capitalize}}  {{notif.prenom|capitalize}}</strong>
+		        {% endif %} 
+		        aime une publication sur votre journal
+			   </p>
+			   <p class="text-primary notifaffichage">Publication:<strong>{{notif.content}}</strong></p>
+			</div>
+			<div class="col-sm-4">
+			    <strong>
+                   <time class="timeago" datetime="{{ notif.createdAt|date }}">{{ notif.createdAt|date }}</time>
+                </strong>
+			</div>
+	    </div>
+	  </div>
+	</div>
+</a>
+	<hr class="hrPers">
+		{% else %}
+		<div class="row">
+			<div class="col-sm-8 ">
+			    <p class="text-info">Autre notification</p>
+			</div>
+	    </div>
+	    {% endif %}
+    {% endfor %}
+	{% endif %}   
+</div>

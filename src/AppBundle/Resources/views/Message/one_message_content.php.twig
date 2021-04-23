@@ -1,0 +1,157 @@
+<div class="container">
+	<div class="card">
+	    <div class="card-body">
+	       <div class="row">
+			    <div class="col-sm-6"> 
+	{% if user.nom is empty %}
+		<h5><a href="{{path('profile_amis',{id:user.id})}}" class="text-info">{{user.username|capitalize}}</a></h5>
+	{% else %}
+		<h5><a href="{{path('profile_amis',{id:user.id})}}" class="text-info">{{user.nom|capitalize}}  {{user.prenom|capitalize}}</a></h5>
+	{% endif %}
+		        </div>
+		        <div class="col-sm-2"> 
+			       <a href="{{path('one_message',{'id':user.id,'offset':0,'max':5,'state':0})}}" class="btn btn-info" title="rafraichir">
+	                  <span class="step size-16">
+		              	<i class="icon ion-android-refresh bblue"></i>
+		              </span>
+	                </a>
+	            </div>
+			</div>
+	      <div class="row">
+	         <div class="col-sm-8 mess"> 
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-1">
+					{% if offset > 0 %}	
+						<a href="{{path('one_message',{'id':user.id,'offset':offset-5,'max':max,'state':0})}}" class="btn btn-info btn-sm hidden-xs" title="plus...">
+				            Messages plus récents
+				        </a>
+				        <a href="{{path('one_message',{'id':user.id,'offset':offset-5,'max':max,'state':0})}}" class="text-info visible-xs " title="plus...">
+				            Messages plus récents
+				        </a>
+				    {% endif %}
+					</div>
+				</div>
+	{% for allmp in allmsg %}
+			    <div class="row">
+	                <div class="col-sm-8 col-sm-offset-1">
+			{% if allmp.nom is empty %}
+			    {% if app.user.username == allmp.username %}
+				<a href="{{path('profile_homepage')}}" class="text-info">{{allmp.username|capitalize}}</a><br/>
+			    {% else %}
+			    <a href="{{path('profile_amis',{id:allmp.id})}}" class="text-success">{{allmp.username|capitalize}}</a><br/>
+			    {% endif %}
+			{% else %}
+			    {% if app.user.nom == allmp.nom %}
+				<a href="{{path('profile_homepage')}}" class="text-info">{{allmp.nom|capitalize}}  {{allmp.prenom|capitalize}}</a><br/>
+				{% else %}
+				<a href="{{path('profile_amis',{id:allmp.id})}}" class="text-success">{{allmp.nom|capitalize}}  {{allmp.prenom|capitalize}}</a><br/>
+                {% endif %}
+			{% endif %}
+	                </div>
+	            </div>
+	            <div class="row">
+	                    <div class="col-sm-8 col-sm-offset-1">
+	                    {% if app.user.id == allmp.idSender %}
+	                       <p class="mpuser">
+	                       <span class="step size-16">
+		                    <i class="icon ion-android-chat blue"></i>
+		                    </span>
+	                       {{ allmp.contentMessage|nl2br }}
+	                       </p>
+	                    {% else %}
+	                       <p class="mpuser">
+		                       <span class="step size-16">
+			                    <i class="icon ion-android-chat green"></i>
+			                    </span>
+	                       {{ allmp.contentMessage|nl2br }}
+	                       </p>
+	                    {% endif %}
+	                    </div>
+	            </div>
+	            <div class="row">
+	                    <div class="col-sm-8 col-sm-offset-1">
+	                        <p>
+	                           <span class="step size-16">
+			                    <i class="ion-android-alarm-clock"></i>
+			                    </span>
+		                    <strong>
+	                        	<time class="timeago" datetime="{{ allmp.createdAt|date }}">{{ allmp.createdAt|date }}</time>
+	                        </strong>
+	                        </p>
+	                    </div>
+	            </div>
+	            <hr>
+	{% endfor %}
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-1">
+					{% if (nombremessages-5) > offset %}	
+						<a href="{{path('one_message',{'id':user.id,'offset':offset+5,'max':max,'state':0})}}" class="btn btn-info btn-sm hidden-xs" title="plus...">
+				            Messages plus anciens
+				        </a>
+				        <a href="{{path('one_message',{'id':user.id,'offset':offset+5,'max':max,'state':0})}}" class="text-info visible-xs" title="plus...">
+				            Messages plus anciens
+				        </a>
+				    {% endif %}
+					</div>
+				</div>
+			       {{form_start(form) }}
+	             <div class="row">
+			                <div class="col-sm-12">
+			                     {{ form_errors(form)}}
+			                </div>
+			      </div>
+			      <div class="row">
+	                    <div class="col-sm-8 col-sm-offset-1 pers">
+	                        {{form_widget(form.contentMessage,{attr :{ class :'form-control contentPublier',placeholder :'Votre message ici..'}}) }} 
+	                    </div>   
+	                    <div class="col-sm-3">
+	                        {{form_widget(form.envoyer,{attr :{ class :'btn btn-info'}}) }} 
+	                    </div> 
+			       </div>
+			       {{form_rest(form) }}
+             </div>
+             <div class="col-sm-3 option">
+                <div class="row">
+                    <div class="col-sm-12">
+			            <p class="text-info">
+			                 Nombre messages({{nombremessages}})
+			            </p>
+	                </div>
+	            </div>
+                <div class="row">
+                    <div class="col-sm-12">
+		            {% if allmsg is not empty %}
+		                <a href="{{path('one_message',{'id':user.id,'offset':0,'max':5,'state':0})}}" class="btn btn-info btn-sm hidden-xs" title="dernier">
+			                 Les derniers messages
+			            </a>
+			            <a href="{{path('one_message',{'id':user.id,'offset':0,'max':5,'state':0})}}" class="text-info visible-xs" title="dernier">
+			                 Les derniers messages
+			            </a>
+			        {% endif %}
+	                </div>
+	            </div>
+	            <div class="row">
+                    <div class="col-sm-12">
+		                <a href="#" class="btn btn-info btn-sm hidden-xs" title="dernier">
+			                 Bloquer les messages
+			            </a>
+			            <a href="#" class="text-info visible-xs" title="dernier">
+			                 Bloquer les messages
+			            </a>
+	                </div>
+	            </div>
+	            <div class="row">
+                    <div class="col-sm-12">
+		                <a href="#" class="btn btn-info btn-sm hidden-xs" title="dernier">
+			                 Mettre en sourdine
+			            </a>
+			            <a href="#" class="text-info visible-xs" title="dernier">
+			                 Mettre en sourdine
+			            </a>
+	                </div>
+	            </div>
+	         </div>
+	      </div>
+	    </div>
+	</div>
+</div>

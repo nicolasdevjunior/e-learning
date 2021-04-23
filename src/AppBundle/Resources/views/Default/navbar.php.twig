@@ -1,0 +1,95 @@
+ <nav class="navbar navbar-info navbar-ct-transparent navbar-relative " role="navigation-demo" id="register-navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{path('profile_homepage')}}">
+            <img src="{{asset('img/logo/logov2.png')}}" class="img-responsive" width="80px" height="80px"/>
+          </a>
+        </div>
+    
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navigation-example-2">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="iconsMenu">
+                <a href="{{path('message')}}" class="btn btn-simple hidden-xs" title="messages">
+                   <span class="step size-32">
+                      <i class="icon ion-chatbubbles iconsnotify"></i>
+                    </span>
+                    <label class="notificationsStatut bpurple">{{nbreMessage}}</label>
+                </a>
+                <a href="{{path('message')}}" class="btn btn-simple visible-xs" title="messages">
+                   Messages(
+                    <label class="purple">{{nbreMessage}}</label>)
+                </a>
+            </li>
+            <li class="iconsMenu">
+                <a href="{{path('notifications')}}" class="btn btn-simple hidden-xs" title="notifications">
+                  <span class="step size-32">
+                    <i class="icon ion-ios-bell-outline iconsnotify"></i>
+                  </span>
+                  <label class="notificationsStatut bpurple">{{nombreNotification}}</label>
+                </a>
+
+                <a href="{{path('notifications')}}" class="btn btn-simple visible-xs" title="notifications">
+                  Notifications(
+                  <label class="purple">{{nombreNotification}}</label>)
+                </a>
+            </li>
+            <li class="iconsMenu">
+                <a href="{{path('demande')}}" class="btn btn-simple hidden-xs" title="demandes">
+                  <span class="step size-32">
+                    <i class="icon ion-person-add iconsnotify"></i>
+                  </span>
+                  <label class="notificationsStatut bpurple">{{ nombreDemande}}</label>
+                </a>
+
+                <a href="{{path('demande')}}" class="btn btn-simple visible-xs" title="demandes">
+                  Demandes(
+                  <label class="purple">{{ nombreDemande}}</label>)
+                </a>
+            </li>
+            <li class="iconsMenu">
+                <a href="{{path('amis')}}" class="btn btn-simple hidden-xs" title="amis">
+                   <span class="step size-32">
+                    <i class="icon ion-android-contacts iconsnotify"></i>
+                  </span>
+                </a>
+
+                <a href="{{path('amis')}}" class="btn btn-simple visible-xs" title="amis">
+                  Amis
+                </a>
+            </li>
+            <li class="iconsMenu">
+                <a href="{{path('suggestion')}}" class="btn btn-simple hidden-xs" title="suggestions">
+                  <span class="step size-32">
+                    <i class="icon ion-ios-people"></i>
+                  </span>
+                </a>
+
+                <a href="{{path('suggestion')}}" class="btn btn-simple visible-xs" title="suggestions">
+                  Suggestions
+                </a>
+            </li>
+            <li class="iconsMenu">
+                <a href="{{path('maintenance')}}" class="btn btn-simple hidden-xs" title="plus de menu">
+                  <span class="step size-32">
+                    <i class="icon ion-android-add-circle"></i>
+                  </span>
+                </a>
+
+                <a href="{{path('maintenance')}}" class="btn btn-simple visible-xs" title="plus de menu">
+                  Plus
+                </a>
+            </li> 
+            <li class="iconsMenu">
+                <a href="{{path('fos_user_security_logout')}}" class="btn btn-simple">Déconnexion</a>
+            </li>      
+           </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-->
+    </nav>

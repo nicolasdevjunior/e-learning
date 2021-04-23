@@ -1,0 +1,64 @@
+ {% extends "::base.html.twig" %}
+
+{% block title %}
+     Cours
+{% endblock %}
+
+{% block body %}   
+
+    {% block menu %}
+           {% include "AppBundle:Default:nav.php.twig" %}
+    {% endblock %}
+
+    {% include "AppBundle:Cours:cours_content.php.twig" %} 
+     {% block footer %}
+           {% include "AppBundle:Default:footer.php.twig" %}
+     {% endblock %}
+{% endblock %}
+{% block javascript %}
+<script>
+    $(document).ready(function()
+    {
+        $(".fichier").removeAttr("required");
+        $(".content").removeAttr("required");
+
+        $("[name='appbundle_cours']").submit(function(e){
+            e.preventDefault();
+            var content = $(".content").val();
+            var form = document.getElementsByTagName("form");
+            var data = new FormData(form[0]);
+            data.append('fichier', $('.fichier')[0].files[0]);
+            $.ajax({
+                    url:"{{path('sendcours')}}",
+                    type: 'POST',
+                    data:data,
+                    processData:false,
+                    contentType:false,
+                    dataType:"json",
+                    beforeSend: function()
+                    {
+                        console.log('chargement...');
+                        $('#chargement').removeClass("hidden");
+                        $('#chargement').html('chargement de votre messages...');
+                    },
+                    success: function(data){  
+                        // window.location.reload();
+                        console.log(data);
+                        $('#chargement').addClass("hidden");
+                        $('#success').removeClass("hidden"); 
+                        $('#success').html('Message envoyé avec succès...');
+                        $("#success").delay(4000).fadeOut(1000);
+                    },
+                    error: function(data)
+                    {
+                        console.log(data);
+                        $('#chargement').addClass("hidden");
+                        $('#success').addClass("hidden"); 
+                        $('#erreurPub').removeClass("hidden");
+                        $('#erreurPub').html('Nous ne pouvons pas envoyer votre message pour l\'instant...');
+                    }
+            }); 
+        });
+    });      
+</script> 
+{%endblock%}

@@ -1,0 +1,248 @@
+ {% extends "::base.html.twig" %}
+
+{% block title %}
+     Projet
+{% endblock %}
+
+{% block body %}   
+    {% block menu %}
+        {% include "AppBundle:Default:nav.php.twig" %}
+    {% endblock %}
+
+    {% include "AppBundle:Projet:projet_content.php.twig" %} 
+
+    {% block footer %}
+        {% include "AppBundle:Default:footer.php.twig" %}
+    {% endblock %}
+
+    {% block modal %}
+     <!-- Se connecter -->
+<div class="modal fade" id="add_project" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title text-center" id="myModalLabel">Ajouter un projet</h4>
+		      </div>
+		       <form action="#" method="post">
+			      <div class="modal-body">
+			          <label>{{ 'Nom projet'|trans }}</label>
+			          <input type="text" id="nomprojet" class="nomprojet form-control" name="nomprojet" required="required"  placeholder="inserer le nom du projet" /> 
+
+			           <label>Date limite du projet:</label>
+                       <input type="text" class="datelimite some_class form-control" value="" id="some_class_1" placeholder="date limite du projet" />
+
+			          <label>{{ 'Description'|trans }}</label>
+			          <textarea placeholder="inserer la description du projet ici..." class="form-control descriptionprojet" required="required"></textarea>
+			      </div>
+			      <div class="modal-footer">
+			        <input type="submit" class="btn btn-info creer" id="_submit" name="_submit" value="{{ 'Ajouter le projet'|trans }}" data-dismiss="modal"/>
+			        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			      </div>
+		      </form>
+		    </div>
+		  </div>
+</div>
+     <!--modal-->
+    {% endblock %}
+{% endblock %}
+{% block javascript %}
+<script>
+    $(document).ready(function()
+    {
+            $(".creer").click(function(e){
+                e.preventDefault();
+                var nomprojet = $('.nomprojet').val();
+                var descriptionprojet = $('.descriptionprojet').val();
+                var datelimite = $('.datelimite').val();
+                var now = moment().format("YYYY-MM-DD HH:mm:ss");
+            if(content !="" && descriptionprojet !="" && datelimite)
+            {
+                $.ajax({
+                    url: "{{path('create_projet')}}",
+                    type: 'POST',
+                    data:
+                    {
+                        now : now,
+                        nomprojet : nomprojet, 
+                        descriptionprojet : descriptionprojet,
+                        datelimite : datelimite
+                    }, 
+                    beforeSend: function()
+                    {
+                        console.log('chargement...');
+                        $('#chargement').removeClass("hidden");
+                        $('#chargement').html('chargement de votre projet...');
+                    },
+                    success:function(data)
+                    {
+                      console.log(data);
+                      $('.nomprojet').val("");
+                      $('.descriptionprojet').val("");
+                      $('.datelimite').val("");
+                      $('#chargement').addClass("hidden");
+                      $('#success').removeClass("hidden"); 
+                      $('#success').html('Projet crée avec succès...');
+                      $("#success").delay(4000).fadeOut(1000); 
+                      location.reload();
+                     },
+                     error:function()
+                     {
+                        $('#chargement').addClass("hidden");
+                        $('#success').addClass("hidden"); 
+                        $('#erreurPub').removeClass("hidden");
+                        $('#erreurPub').html('Nous ne pouvons pas créer votre projet pour l\'instant...');
+                     }  
+                }); 
+            }else{
+                $('#erreurPub').removeClass("hidden");
+                $('#erreurPub').html('Veullez remplir les champs requis...');
+                $('#erreurPub').delay(4000).fadeOut(2000);
+            }
+                       
+            });
+    });
+   </script> 
+
+   <script>
+window.onerror = function(errorMsg) {
+	$('#console').html($('#console').html()+'<br>'+errorMsg)
+}*//*
+
+$.datetimepicker.setLocale('en');
+
+$('#datetimepicker_format').datetimepicker({value:'2015/04/15 05:03', format: $("#datetimepicker_format_value").val()});
+console.log($('#datetimepicker_format').datetimepicker('getValue'));
+
+$("#datetimepicker_format_change").on("click", function(e){
+	$("#datetimepicker_format").data('xdsoft_datetimepicker').setOptions({format: $("#datetimepicker_format_value").val()});
+});
+$("#datetimepicker_format_locale").on("change", function(e){
+	$.datetimepicker.setLocale($(e.currentTarget).val());
+});
+
+$('#datetimepicker').datetimepicker({
+dayOfWeekStart : 1,
+lang:'en',
+disabledDates:['1986/01/08','1986/01/09','1986/01/10'],
+startDate:	'1986/01/05'
+});
+$('#datetimepicker').datetimepicker({value:'2015/04/15 05:03',step:10});
+
+$('.some_class').datetimepicker();
+
+$('#default_datetimepicker').datetimepicker({
+	formatTime:'H:i',
+	formatDate:'d.m.Y',
+	//defaultDate:'8.12.1986', // it's my birthday
+	defaultDate:'+03.01.1970', // it's my birthday
+	defaultTime:'10:00',
+	timepickerScrollbar:false
+});
+
+$('#datetimepicker10').datetimepicker({
+	step:5,
+	inline:true
+});
+$('#datetimepicker_mask').datetimepicker({
+	mask:'9999/19/39 29:59'
+});
+
+$('#datetimepicker1').datetimepicker({
+	datepicker:false,
+	format:'H:i',
+	step:5
+});
+$('#datetimepicker2').datetimepicker({
+	yearOffset:222,
+	lang:'ch',
+	timepicker:false,
+	format:'d/m/Y',
+	formatDate:'Y/m/d',
+	minDate:'-1970/01/02', // yesterday is minimum date
+	maxDate:'+1970/01/02' // and tommorow is maximum date calendar
+});
+$('#datetimepicker3').datetimepicker({
+	inline:true
+});
+$('#datetimepicker4').datetimepicker();
+$('#open').click(function(){
+	$('#datetimepicker4').datetimepicker('show');
+});
+$('#close').click(function(){
+	$('#datetimepicker4').datetimepicker('hide');
+});
+$('#reset').click(function(){
+	$('#datetimepicker4').datetimepicker('reset');
+});
+$('#datetimepicker5').datetimepicker({
+	datepicker:false,
+	allowTimes:['12:00','13:00','15:00','17:00','17:05','17:20','19:00','20:00'],
+	step:5
+});
+$('#datetimepicker6').datetimepicker();
+$('#destroy').click(function(){
+	if( $('#datetimepicker6').data('xdsoft_datetimepicker') ){
+		$('#datetimepicker6').datetimepicker('destroy');
+		this.value = 'create';
+	}else{
+		$('#datetimepicker6').datetimepicker();
+		this.value = 'destroy';
+	}
+});
+var logic = function( currentDateTime ){
+	if (currentDateTime && currentDateTime.getDay() == 6){
+		this.setOptions({
+			minTime:'11:00'
+		});
+	}else
+		this.setOptions({
+			minTime:'8:00'
+		});
+};
+$('#datetimepicker7').datetimepicker({
+	onChangeDateTime:logic,
+	onShow:logic
+});
+$('#datetimepicker8').datetimepicker({
+	onGenerate:function( ct ){
+		$(this).find('.xdsoft_date')
+			.toggleClass('xdsoft_disabled');
+	},
+	minDate:'-1970/01/2',
+	maxDate:'+1970/01/2',
+	timepicker:false
+});
+$('#datetimepicker9').datetimepicker({
+	onGenerate:function( ct ){
+		$(this).find('.xdsoft_date.xdsoft_weekend')
+			.addClass('xdsoft_disabled');
+	},
+	weekends:['01.01.2014','02.01.2014','03.01.2014','04.01.2014','05.01.2014','06.01.2014'],
+	timepicker:false
+});
+var dateToDisable = new Date();
+	dateToDisable.setDate(dateToDisable.getDate() + 2);
+$('#datetimepicker11').datetimepicker({
+	beforeShowDay: function(date) {
+		if (date.getMonth() == dateToDisable.getMonth() && date.getDate() == dateToDisable.getDate()) {
+			return [false, ""]
+		}
+
+		return [true, ""];
+	}
+});
+$('#datetimepicker12').datetimepicker({
+	beforeShowDay: function(date) {
+		if (date.getMonth() == dateToDisable.getMonth() && date.getDate() == dateToDisable.getDate()) {
+			return [true, "custom-date-style"];
+		}
+
+		return [true, ""];
+	}
+});
+$('#datetimepicker_dark').datetimepicker({theme:'dark'})
+
+
+</script>
+{%endblock%}

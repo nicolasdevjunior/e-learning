@@ -1,0 +1,50 @@
+{% extends "::base.html.twig" %}
+{% block title %}
+     Plus de menu
+{% endblock %}
+
+{% block body %}
+
+{{ render(controller("AppBundle:Menu:index"))}} 
+{% include "AppBundle:Plus:plus_content.php.twig" %} 
+{% include "AppBundle:Default:footer.php.twig" %}
+
+{% endblock %}
+{% block javascript %} 
+<script>
+$(document).ready(function()
+{
+        $(".groupe").click(function(){
+            // e.preventDefault();
+            $(".paramContent").addClass("hidden");
+            $(".pagesContent").addClass("hidden");
+            $(".evenementContent").addClass("hidden");
+            $(".groupeContent").removeClass("hidden");
+        });
+
+        $(".pages").click(function(){
+            // e.preventDefault();
+            $(".paramContent").addClass("hidden");
+            $(".pagesContent").removeClass("hidden");
+            $(".evenementContent").addClass("hidden");
+            $(".groupeContent").addClass("hidden");
+        });
+
+        $(".evenement").click(function(){
+            $(".paramContent").addClass("hidden");
+            $(".pagesContent").addClass("hidden");
+            $(".evenementContent").removeClass("hidden");
+            $(".groupeContent").addClass("hidden");
+        });
+
+        $(".parametre").click(function(){
+            // e.preventDefault();
+            $(".paramContent").removeClass("hidden");
+            $(".pagesContent").addClass("hidden");
+            $(".evenementContent").addClass("hidden");
+            $(".groupeContent").addClass("hidden");
+        });
+});
+    	
+    </script> 
+{%endblock%}

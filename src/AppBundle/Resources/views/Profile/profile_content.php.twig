@@ -1,0 +1,156 @@
+<section class="profile">
+    <div class="container">
+        <div class="row ">
+            <div class="col-sm-3 card-round">
+                <div class="contenu">
+                     <div class="title">
+                         <h3 class="text-center">
+                        {% if app.user.nom is not empty %}
+                              {{ app.user.nom|e|capitalize }} {{ app.user.prenom|e|capitalize }}
+                        {% else %}
+                              {{ app.user.username|e|capitalize }}
+                         {% endif %}
+                         </h3>
+                     </div>
+                     <div>
+                          <img src="{{asset('img/pdpdefault/avatar2.png')}}" class="img-responsive img-circle text-center avatar" width="50%" height="50%" />
+                     </div>
+                     <hr>
+                    {% if app.user.nom is not empty %}
+                     <div class="text">
+                         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>{{ app.user.activite|e|capitalize }}</p>
+                         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ app.user.Ville|e|capitalize }}</p>
+                         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>{{ app.user.jour|e|capitalize }} {{ app.user.mois|e|capitalize }} ,{{ app.user.annee|e|capitalize }}</p>
+                     </div>
+                     {% endif %}
+                </div> 
+            </div>
+            <div class="col-sm-6 card-round">
+                {% if check_update == 1 %}
+                <div class="contenu">
+                     <form method="POST" action="{{ path('publication') }}">
+                        <div class="row title">
+                            <h6>
+                                Publier quelque chose...
+                            </h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <textarea placeholder="inserer votre publication ici..." class="form-control contentPublier"></textarea>   
+                            </div>
+                            <div class="col-sm-2">
+                                <span class="pubIc step size-64">
+                                      <i class="icon ion-ios-paperplane publier blue"></i>
+                                </span>
+                            </div>
+                        </div>
+                     </form>
+                </div>
+                <div class="center-block notification">
+                    <div class="text-center">
+                        <p id="chargement" class="text-info hidden"></p>
+                        <p id="success" class="text-success hidden"></p>
+                        <p id="erreurPub" class="text-danger hidden"></p>
+                    </div>   
+                </div> 
+                <div id="ajoutPublications" class="justclick contenu hidden">
+                   <div class="avatarContent">
+                      <div class="row">
+                           <div class="col-sm-2">
+                               <img src="{{asset('img/pdpdefault/avatar2.png')}}" class="img-responsive img-circle text-center" width="50px" height="50px" />
+                           </div>
+                           <div class="col-sm-6">
+                               <h4>{{ app.user.nom|e|capitalize }} {{ app.user.prenom|e|capitalize }}</h4>
+                           </div>
+                           <div class="col-sm-4">
+                               <p class="pull-right created_at">1min</p>
+                           </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                          <div class="col-sm-12 contentPub">
+                               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-12">
+                              <a href="{{path('jaime',{'id':'un'})}}" class="text-info jaime">J'aime
+                              </a>
+                              <a href="{{path('commentairePub',{'idcoms':'un'})}}" class="text-primary commentaire">Commentaire
+                              </a>
+                              <a href="{{path('supprimer',{'id':'un'})}}" class="text-danger supprimer">Supprimer
+                              </a>
+                          </div>
+                      </div>
+                   </div>
+                </div>  
+                {% for pub in publications %}
+                <div class="contenu">
+                   <div class="avatarContent">
+                      <div class="row">
+                           <div class="col-sm-2">
+                               <img src="{{asset('img/pdpdefault/avatar2.png')}}" class="img-responsive img-circle text-center" width="50px" height="50px" />
+                           </div>
+                           <div class="col-sm-6">
+                               <h4>{{ pub.nom|e|capitalize }} {{ pub.prenom|e|capitalize }}</h4>
+                           </div>
+                           <div class="col-sm-4">
+                               <p class="pull-right created_at"><time class="timeago" datetime="{{ pub.created_at|date }}">{{ pub.created_at|date }}</time></p>
+                           </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                          <div class="col-sm-12 contentPub">
+                               <p>{{ pub.content|e|nl2br }}</p>
+                          </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                          <div class="col-sm-12">
+                              {{ render(controller("AppBundle:Operation:personnequiaime",{'idPub' :pub.id})) }}
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-12">
+                            {% if pub.jaime > 0 %}
+                            {{ pub.jaime }}
+                            {% endif %}
+                            {{ render(controller("AppBundle:Profile:ifSomeoneWasLikedSomePub",{'idpub' :pub.id})) }}
+
+                              {% if pub.commentaires > 0 %}
+                                <a href="{{path('commentairePub',{'idcoms':pub.id})}}" class="text-primary">Commentaire({{ pub.commentaires }})
+                                </a>
+                              {% else %}
+                                <a href="{{path('commentairePub',{'idcoms':pub.id})}}" class="text-primary">Commentaire
+                                </a>
+                              {% endif %}
+                                
+                                <a href="{{path('supprimer',{'id':pub.id})}}" class="text-danger">Supprimer
+                                </a>
+
+                          </div>
+                      </div>
+                   </div>
+                </div> 
+                {% endfor %}
+                {% else %}
+                   {% include "AppBundle:Profile:edit_profile.php.twig" %}
+                {% endif %}
+            </div>
+            <div class="col-sm-3 card-round">
+                <div class="contenu text-center">
+                    <h3 class="text-center text-info calligraphy">Information</h3>
+                    <h3 class="text-center">E-learning</h3>
+                    <p class="text-center">Conçu pour vous aidez à élargir vos compétences en ligne gratuitement , n'importe ou et n'importe quand sur votre ordinateur ou sur votre smartphone</p>
+                    <a href="#" class="btn btn-block btn-default">Consultez les cours</a>
+                </div>
+                <div class="contenu text-center">
+                    <p class="text-center">Demande d'amis</p>
+                    <h4 class="text-center">Nicolas Nico</h4>
+                    <a href="#" class="btn btn-success">Accepter</a>
+                    <a href="#" class="btn btn-danger">Refuser</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 

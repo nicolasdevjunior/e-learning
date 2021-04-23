@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="card">
+	    <div class="card-body">
+	      <div class="row">
+	         <div class="col-sm-8"> 
+	   {% for info in infouser %}
+	    <div class="row">     
+	        <div class="col-sm-2"> 
+		   		{% if info.sex == 1 %}     
+			        <img class="avatar" src="{{asset('img/pdpdefault/h_sexe.jpg')}}" alt="..." width="100px" height="100px">
+			    {% else %}
+			        <img class="avatar" src="{{asset('img/pdpdefault/f_sexe.jpg')}}" alt="..." width="100px" height="100px">
+			    {% endif %}
+		    </div>
+		    <div class="col-sm-3"> 
+		    {% if info.nom is empty %}
+		    <a href="{{path('profile_amis',{id:info.id})}}" class="text-info">{{info.username}}</a><br/>
+		    {% else %}
+		    <a href="{{path('profile_amis',{id:info.id})}}" class="text-info">{{info.nom}}  {{info.prenom}}</a><br/>
+		    {% endif %}
+		    </div>
+		    <div class="col-sm-2"> 
+		      <a href="{{path('confirmerDemandeUser',{id:info.id})}}" class="btn btn-success btn-sm hidden-xs">Confirmer</a>
+
+			  <a href="{{path('annuler_demande_user',{id:info.id})}}" class="btn btn-danger btn-sm hidden-xs">Supprimer</a>
+
+			  <hr class="visible-xs">
+
+			  <a href="{{path('confirmerDemandeUser',{id:info.id})}}" class="text-success visible-xs">Confirmer</a>
+
+			  <a href="{{path('annuler_demande_user',{id:info.id})}}" class="text-danger visible-xs">Supprimer</a>
+		    </div>
+		</div> 
+		<hr>
+	   {% endfor %}
+	         </div>
+	      </div>
+	    </div>
+	</div>
+</div>
